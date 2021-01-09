@@ -1,7 +1,0 @@
-node_modules/
-*.code-workspace
-*.html
-*.css
-*.txt
-*test*
-sass.config.txt
