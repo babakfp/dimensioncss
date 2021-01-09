@@ -1,0 +1,196 @@
+
+@use "sass:map"
+@use "sass:list"
+@use "sass:string"
+@use "str-replace" as *
+@use "type-check-functions" as *
+@use "type-convert-functions" as *
+@use "validate-options" as validate-option
+@use "data" as *
+@use "helper" as *
+@use "property-option" as *
+
+
+@mixin get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+  @include print-property-option($utility-name, $property, $value, $important)
+  
+  @each $slv-item-map-property, $slv-item-map-value in $slv-item-map
+    #{$slv-item-map-property}: #{$slv-item-map-value} #{$important}
+     
+  // @each $property, $property-value in $property
+  //   $property-value: replace-placeholder-with-value($property-value, $value)
+  //   #{$property}: #{$property-value} #{$important}
+
+
+@mixin get-selectors-and-continue($utility-name, $class, $value, $property, $slv-item-map, $variants, $breakpoint-class)
+
+  $class-prefix: map.get($dimensioncss, settings, class-prefix)
+
+  // CSS !important keyword
+  $use-important: index($variants, important) or map.get($dimensioncss, settings, important)
+  $important: if($use-important, "!important", "")
+
+  .#{$class-prefix}#{$breakpoint-class}#{$class}
+    @include get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+
+  @if index($variants, first)
+    .#{$class-prefix}#{$breakpoint-class}first\:#{$class}:first-child
+      @include get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+
+  @if index($variants, last)
+    .#{$class-prefix}#{$breakpoint-class}last\:#{$class}:last-child
+      @include get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+
+  @if index($variants, first-type)
+    .#{$class-prefix}#{$breakpoint-class}first-type\:#{$class}:first-of-type
+      @include get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+
+  @if index($variants, last-type)
+    .#{$class-prefix}#{$breakpoint-class}last-type\:#{$class}:last-of-type
+      @include get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+
+  @if index($variants, odd)
+    .#{$class-prefix}#{$breakpoint-class}odd\:#{$class}:nth-child(odd)
+      @include get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+
+  @if index($variants, even)
+    .#{$class-prefix}#{$breakpoint-class}even\:#{$class}:nth-child(even)
+      @include get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+
+  @if index($variants, visited)
+    .#{$class-prefix}#{$breakpoint-class}visited\:#{$class}:visited
+      @include get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+
+  @if index($variants, checked)
+    .#{$class-prefix}#{$breakpoint-class}checked\:#{$class}:checked
+      @include get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+
+  @if index($variants, group-hover)
+    .#{$class-prefix}#{$breakpoint-class}group:hover .group-hover\:#{$class}
+      @include get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+      
+  @if index($variants, group-focus)
+    .#{$class-prefix}#{$breakpoint-class}group:focus .group-focus\:#{$class}
+      @include get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+
+  @if index($variants, focus-within)
+    .#{$class-prefix}#{$breakpoint-class}focus-within\:#{$class}:focus-within
+      @include get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+
+  @if index($variants, hover)
+    .#{$class-prefix}#{$breakpoint-class}hover\:#{$class}:hover
+      @include get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+
+  @if index($variants, focus)
+    .#{$class-prefix}#{$breakpoint-class}focus\:#{$class}:focus
+      @include get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+
+  @if index($variants, focus-visible)
+    .#{$class-prefix}#{$breakpoint-class}focus-visible\:#{$class}:focus-visible
+      @include get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+
+  @if index($variants, active)
+    .#{$class-prefix}#{$breakpoint-class}active\:#{$class}:active
+      @include get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+
+  @if index($variants, disabled)
+    .#{$class-prefix}#{$breakpoint-class}disabled\:#{$class}:disabled
+      @include get-css-class-inside-the-brackets($utility-name, $value, $property, $slv-item-map, $important)
+
+
+// responsive, hover, focus ...
+// the main class for the css class selector. type is string or empty string.
+// value (...). value map that are placed inside the utility options.
+// type is map.
+// sm, md ...
+@mixin get-styles-to-print($utility-name, $utility-options, $breakpoint-class)
+  
+
+  // All the utility options.
+  $variants: validate-option.variants(map.get($utility-options, variants))
+  $class: validate-option.class(map.get($utility-options, class))
+  $value: validate-option.value(map.get($utility-options, value))
+  $property: validate-option.property(map.get($utility-options, property))
+
+  // Set default value
+  @if is-null($class)
+    $class: $utility-name
+  @if is-null($property)
+    $property: $utility-name
+
+
+  // [639509]. to prevent this from happening:
+  // .shadow { ... }
+  // .shadow-sm { ... }
+  // .shadow--md { ... }
+  // .shadow---lg { ... }
+  $class-clone: $class
+  
+  // convert to map
+  $value: to-map($value)
+
+  // value(utility option): ($second-level-class: $second-level-value)
+  @each $second-level-class, $second-level-value in $value
+
+
+    // [3915] need to check, if the $class not empty. because in the output, we need a class name for the selector. if both $class and $second-level-class was empty, we will get a css error and output will be like: . {...}.
+    @if $class != ""
+      @if $second-level-class != DEFAULT
+        // seperate the $class from $second-level-class.
+        $class: $class + "-"
+      @else
+        // border-width class example:
+        //   value(
+        //     DEFAULT: 1px,
+        //     1: 2px,
+        //     ...
+        //   )
+        //   .border {border-width: 1px}
+        //   .border-2 {border-width: 2px}
+        $second-level-class: ""
+
+    // checking for the deep values. like the colors. value(gray:(100: #)).
+    @if is-map($second-level-value)
+
+      @each $third-level-class, $third-level-value in $second-level-value
+
+        // [3915]. convert .bg-gray-100 to .bg-gray
+        // if default if the previous class or the main class was not empty.
+        @if $third-level-class == DEFAULT
+          @if $second-level-class != "" or $class != ""
+            $third-level-class: ""
+        @else
+          $third-level-class: "-" + $third-level-class
+
+        // do reset of the stuff on thin mixin.
+        // combine classes together because we don't need them separately anymore.
+        @include get-selectors-and-continue($utility-name, $class + $second-level-class + $third-level-class, $third-level-value, $property, "", $variants, $breakpoint-class)
+
+      // This is for the time that user want to add extra uniq style to the value.
+      // example for font-size: (xs: .75rem (line-height: 1rem)).
+    @else if is-list($second-level-value)
+
+      $slv-item-map: ()
+      $slv-item-list: null
+
+      @each $slv-item in $second-level-value
+        @if is-map($slv-item)
+          @each $slv-item-property, $slv-item-value in $slv-item
+            @if is-num($slv-item-property) or is-color($slv-item-property)
+              @error "ERROR: UNEXPECTED TYPE | UTILITY NAME: #{$utility-name} | OPTION: (NAME: value) (TYPE: MAP in LIST) (ERROR ON KEY) (KEY NAME: #{$slv-item-property}) | NOT EXPECTED TYPE: NUMBER, COLOR | RECEIVED TYPE: #{type-as-upper-case($slv-item-property)}"
+            $slv-item-value: replace-placeholder-with-value($slv-item-value, $second-level-value)
+            $slv-item-map: map.deep-merge(($slv-item-property: $slv-item-value), $slv-item-map)
+        @else
+          $slv-item-list: list.append($slv-item-list, $slv-item, $separator: space)
+
+      $second-level-value: $slv-item-list
+             
+      @include get-selectors-and-continue($utility-name, $class + $second-level-class, $second-level-value, $property, $slv-item-map, $variants, $breakpoint-class)
+
+    @else
+      // do reset of the stuff on thin mixin.
+      // combine classes together because we don't need them separately anymore.
+      @include get-selectors-and-continue($utility-name, $class + $second-level-class, $second-level-value, $property, "", $variants, $breakpoint-class,)
+
+    // [639509]
+    $class: $class-clone

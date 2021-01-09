@@ -1,0 +1,10 @@
+@use "sass:map";
+
+$dimensioncss: map.deep-merge((utilities: (
+  font-variant-numeric: (
+    class: "",
+    value: (
+      normal-nums: normal,
+    ) ordinal slashed-zero lining-nums oldstyle-nums proportional-nums tabular-nums diagonal-fractions stacked-fractions,
+  ),
+)), $dimensioncss);

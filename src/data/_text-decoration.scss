@@ -1,0 +1,8 @@
+@use "sass:map";
+
+$dimensioncss: map.deep-merge((utilities: (
+  text-decoration: (
+    class: "",
+    value: underline line-through (no-underline: none)
+  )
+)), $dimensioncss);

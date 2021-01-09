@@ -1,0 +1,17 @@
+// in $str replace $search with $replace
+  
+// param $str as string = initial string
+// param $search as string = substring to replace
+// param $replace as string = new value
+// return as string = updated string
+
+// author Hugo Giraudel
+  
+@function str-replace($str, $search, $replace: '')
+
+  $index: str-index($str, $search)
+
+  @if $index
+    @return str-slice($str, 1, $index - 1) + $replace + str-replace(str-slice($str, $index + str-length($search)), $search, $replace)
+
+  @return $str

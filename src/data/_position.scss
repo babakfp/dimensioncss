@@ -1,0 +1,9 @@
+@use "sass:map";
+
+$dimensioncss: map.deep-merge((utilities: (
+  position: (
+    class: "",
+    value: static fixed absolute relative sticky,
+    variant: responsive
+  )
+)), $dimensioncss);

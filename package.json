@@ -1,0 +1,13 @@
+{
+  "name": "dimensioncss",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "GNU General Public License v3.0",
+  "description": "A utility-first CSS framework for rapid UI development.",
+  "repository": "https://github.com/babakfp/dimensioncss",
+  "author": "Babek",
+  "scripts": {
+    "dev-sass": "sass --no-source-map --watch index.sass:index.css",
+    "dev-scss": "sass --no-source-map --watch index.scss:index.css"
+  }
+}

@@ -1,0 +1,9 @@
+@use "sass:map";
+
+$dimensioncss: map.deep-merge((utilities: (
+  list-style-type: (
+    class: list,
+    value: none disc decimal,
+    variant: first last first-type last-type odd even hover
+  )
+)), $dimensioncss);

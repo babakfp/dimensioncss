@@ -1,0 +1,7 @@
+@use "sass:map";
+
+$dimensioncss: map.deep-merge((utilities: (
+  appearance: (
+    values: none,
+  ),
+)), $dimensioncss);

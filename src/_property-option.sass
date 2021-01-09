@@ -1,0 +1,38 @@
+@use "type-check-functions" as *
+@use "helper" as *
+// @use "str-replace" as *
+
+@mixin print-property-option($utility-name, $property, $value, $important)
+
+  @if is-str($property)
+    #{$property}: #{$value} #{$important}
+
+  @if is-list($property)
+    @each $prop-item in $property
+
+      @if is-str($prop-item)
+        #{$prop-item}: #{$value} #{$important}
+
+      @if is-map($prop-item)
+        @each $prop-as-property, $prop-as-value in $prop-item
+
+          @if is-num($prop-as-property) or is-color($prop-as-property)
+            @error "ERROR: UNEXPECTED TYPE | UTILITY NAME: #{$utility-name} | OPTION: (NAME: property) (TYPE: LIST) (THE MAP INSIDE THE LIST) (ERROR ON KEY), (KEY NAME: #{$prop-as-property}) | NOT EXPECTED TYPE: NUMBER, COLOR | RECEIVED TYPE: #{type-as-upper-case($prop-as-property)}"
+
+          $prop-as-value: replace-placeholder-with-value($prop-as-value, $value)
+
+          #{$prop-as-property}: #{$prop-as-value} #{$important}
+
+  @if is-map($property)
+    @each $prop-key, $prop-value in $property
+
+      @if is-num($prop-key) or is-color($prop-key)
+        @error "ERROR: UNEXPECTED TYPE | UTILITY NAME: #{$utility-name} | OPTION: (NAME: property) (TYPE: MAP) (ERROR ON KEY) (KEY NAME: #{$prop-key}) | NOT EXPECTED TYPE: NUMBER, COLOR | RECEIVED TYPE: #{type-as-upper-case($prop-key)}"
+
+      @if is-list($prop-value) or is-list($prop-value)
+        @error "ERROR: UNEXPECTED TYPE | UTILITY NAME: #{$utility-name} | OPTION: (NAME: property) (TYPE: MAP) (ERROR ON VALUE) | NOT EXPECTED TYPE: LIST, MAP | RECEIVED TYPE: #{type-as-upper-case($prop-value)}"
+
+      $prop-value: replace-placeholder-with-value($prop-value, $value)
+      @debug $value
+        
+      #{$prop-key}: #{$prop-value} #{$important}

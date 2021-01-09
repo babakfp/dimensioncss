@@ -1,0 +1,8 @@
+@use "sass:map";
+
+$dimensioncss: map.deep-merge((utilities: (
+  list-style-position: (
+    class: list,
+    value: inside outside
+  )
+)), $dimensioncss);

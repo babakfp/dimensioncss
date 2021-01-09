@@ -1,0 +1,9 @@
+@use "sass:map";
+
+$dimensioncss: map.deep-merge((utilities: (
+  flex-direction: (
+    class: flex,
+    value: row row-reverse column column-reverse,
+    variant: responsive
+  )
+)), $dimensioncss);

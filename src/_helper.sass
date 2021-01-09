@@ -1,0 +1,36 @@
+@use "sass:string"
+@use "type-check-functions" as *
+@use "str-replace" as *
+
+
+// param any $str
+// param any $search
+@function str-contain($str, $search)
+
+  @if is-map($search)
+    @error "TYPE MAP NOT ALLOWED"
+
+  $str: "#{$str}"
+  $search: "#{$search}"
+
+  $index: string.index($str, $search)
+
+  @if type-of($index) == number
+    @return true
+  @else
+    @return false
+
+
+
+
+// placeholder is 'VALUE'
+// param $placeholder: the value placeholder
+// param $value: the real value
+// The VALUE is just a placeholder to be able to replace it with actual value.
+@function replace-placeholder-with-value($placeholder, $value)
+  @if str-contain($placeholder, VALUE)
+    $placeholder: "#{$placeholder}"
+    $placeholder: str-replace($placeholder, VALUE, $value)
+    $placeholder: string.unquote($placeholder)
+  @return $placeholder
+

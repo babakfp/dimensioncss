@@ -1,0 +1,10 @@
+@use "sass:map";
+@use "../modules/to-rgba" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  text-color: (
+    class: (text: color),
+    value: to-rgba(map.get($dimensioncss, theme, colors), var(--text-opacity)),
+    variant: first last first-type last-type odd even visited checked group-hover group-focus focus-within hover focus focus-visible active disabled,
+  )
+)), $dimensioncss);

@@ -1,0 +1,11 @@
+@use "sass:map";
+
+$dimensioncss: map.deep-merge((utilities: (
+  background-repeat: (
+    class: bg,
+    value: repeat no-repeat repeat-x repeat-y (
+      repeat-round: round,
+      repeat-space: space,
+    ),
+  )
+)), $dimensioncss);

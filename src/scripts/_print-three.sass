@@ -1,0 +1,96 @@
+@use "sass:map"
+@use "../modules/str-contain" as *
+@use "../modules/str-replace" as *
+
+
+$_important: if(map.get($dimensioncss, settings, important), "!important", "")
+$_class-prefix: map.get($dimensioncss, settings, class-prefix)
+$_variant-suffix: map.get($dimensioncss, settings, variant-suffix)
+
+  
+@mixin new-class-property-and-value($property-and-value, $value)
+  @each $property-key, $value-value in $property-and-value
+
+    @if $value-value == VALUE
+      $value-value: $value
+    @else if str-contain($value-value, VALUE)
+      $value-value: str-replace($value-value, VALUE, $value)
+
+    #{$property-key}: #{$value-value} #{$_important}
+
+  
+
+
+
+@function selector-class($breakpoint-className, $class, $class-before: "", $class-after: "")
+  @return #{$_class-prefix}#{$breakpoint-className}#{$_class-prefix}#{$class-before}#{$class}#{$class-after}
+
+
+@mixin take-class-and-values($class, $value, $property-and-value, $variants, $breakpoint-className)
+    
+  .#{selector-class($breakpoint-className, $class)}
+    @include new-class-property-and-value($property-and-value, $value)
+
+  @if index($variants, first)
+    .#{selector-class($breakpoint-className, $class, first + $_variant-suffix, ":first-child")}
+      @include new-class-property-and-value($property-and-value, $value)
+
+  @if index($variants, last)
+    .#{selector-class($breakpoint-className, $class, last + $_variant-suffix, ":last-child")}
+      @include new-class-property-and-value($property-and-value, $value)
+
+  @if index($variants, first-type)
+    .#{selector-class($breakpoint-className, $class, first-type + $_variant-suffix, ":first-of-type")}
+      @include new-class-property-and-value($property-and-value, $value)
+  
+  @if index($variants, last-type)
+    .#{selector-class($breakpoint-className, $class, last-type + $_variant-suffix, ":last-of-type")}
+      @include new-class-property-and-value($property-and-value, $value)
+
+  @if index($variants, odd)
+    .#{selector-class($breakpoint-className, $class, odd + $_variant-suffix, ":nth-child(odd)")}
+      @include new-class-property-and-value($property-and-value, $value)
+
+  @if index($variants, even)
+    .#{selector-class($breakpoint-className, $class, even + $_variant-suffix, ":nth-child(even)")}
+      @include new-class-property-and-value($property-and-value, $value)
+    
+  @if index($variants, visited)
+    .#{selector-class($breakpoint-className, $class, visited + $_variant-suffix, ":visited")}
+      @include new-class-property-and-value($property-and-value, $value)
+
+  @if index($variants, checked)
+    .#{selector-class($breakpoint-className, $class, checked + $_variant-suffix, ":checked")}
+      @include new-class-property-and-value($property-and-value, $value)
+    
+  @if index($variants, group-hover)
+    .#{selector-class($breakpoint-className, $class, "group:hover .group-hover" + $_variant-suffix)}
+      @include new-class-property-and-value($property-and-value, $value)
+    
+  @if index($variants, group-focus)
+    .#{selector-class($breakpoint-className, $class, "group:focus .group-focus" + $_variant-suffix)}
+      @include new-class-property-and-value($property-and-value, $value)
+    
+  @if index($variants, focus-within)
+    .#{selector-class($breakpoint-className, $class, focus-within + $_variant-suffix, ":focus-within")}
+      @include new-class-property-and-value($property-and-value, $value)
+    
+  @if index($variants, hover)
+    .#{selector-class($breakpoint-className, $class, hover + $_variant-suffix, ":hover")}
+      @include new-class-property-and-value($property-and-value, $value)
+    
+  @if index($variants, focus)
+    .#{selector-class($breakpoint-className, $class, focus + $_variant-suffix, ":focus")}
+      @include new-class-property-and-value($property-and-value, $value)
+    
+  @if index($variants, focus-visible)
+    .#{selector-class($breakpoint-className, $class, focus-visible + $_variant-suffix, ":focus-visible")}
+      @include new-class-property-and-value($property-and-value, $value)
+      
+  @if index($variants, active)
+    .#{selector-class($breakpoint-className, $class, active + $_variant-suffix, ":active")}
+      @include new-class-property-and-value($property-and-value, $value)
+
+  @if index($variants, disabled)
+    .#{selector-class($breakpoint-className, $class, disabled + $_variant-suffix, ":disabled")}
+      @include new-class-property-and-value($property-and-value, $value)

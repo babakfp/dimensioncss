@@ -1,0 +1,20 @@
+*
+  appearance: none // something related with form or input
+  list-style: none // remove default list style
+  font-style: normal // remove default font style
+  text-decoration: none // remove default text decoration
+
+// smooth id link transform
+html
+  scroll-behavior: smooth
+
+// somehow prevent x overflow
+body
+  overflow-x: hidden
+
+// add pointer to button's that not disabled (from bootstrap)
+button,
+[type="button"],
+[type="reset"]
+  &:not(:disabled)
+    cursor: pointer

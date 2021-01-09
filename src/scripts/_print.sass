@@ -1,0 +1,41 @@
+@use "sass:map"
+@use "./option-validation" as *
+@import "./print-two"
+
+
+@mixin dimensioncss-print-styles
+
+  // Looping the utility map.
+  @each $utility-name, $utility-options in map.get($dimensioncss, utilities)
+
+    // $free-css: validate($utility-name, map.get($utility-options, free-css), free-css, map null)
+    // @include free-css-option($free-css)
+    
+    // Remove free-css option because it's don't needed anymore.
+    // Don't remove it for now, because need it in the below mixin.
+    // $utility-options: map.deep-remove($utility-options, free-css)
+
+    @include take-utility-options($utility-name, $utility-options, "")
+
+
+
+@mixin dimensioncss-print-responsive-styles
+
+  // Looping the screens map.
+  @each $breakpoint-className, $breakpoint-value in map.get($dimensioncss, theme, screens)
+
+    // CSS media query
+    @media (min-width: #{$breakpoint-value})
+
+      // Looping the utility map.
+      @each $utility-name, $utility-options in map.get($dimensioncss, utilities)
+
+        $variant: option-validation($utility-name, map.get($utility-options, variant), variant)
+
+        @if index($variant, responsive)
+          @include take-utility-options($utility-name, $utility-options, $breakpoint-className)
+
+
+
+@include dimensioncss-print-styles
+@include dimensioncss-print-responsive-styles

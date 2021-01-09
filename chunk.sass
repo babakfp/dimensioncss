@@ -1,0 +1,36 @@
+
+
+
+  
+  
+  
+// ---------------------------------
+
+  
+  
+// @function str-replace($string, $substring, $replace)
+//   $index: string.index($string, $substring)
+//   @if $index
+//     // before the substring | replace | after-the-substring
+//     @return #{string.slice($string, 1, ($index - 1))}#{$replace}#{string.slice($string, ($index + string.length($substring)), string.length($string))}
+//   @return $string
+
+
+
+
+// ---------------------------------
+
+
+
+// @use "sass:string"
+// @use "src/modules/str-replace" as *
+
+// $list: '(1 2 hello by)'
+// $list: inspect($list)
+// @debug str-replace($list, "hello", Hello)
+// @debug $list
+
+
+
+
+// ---------------------------------

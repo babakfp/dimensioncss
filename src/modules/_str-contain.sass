@@ -1,0 +1,18 @@
+@use "sass:string"
+
+// param any $str
+// param any $search
+@function str-contain($str, $search)
+
+  @if type-of($str) != string
+    $str: "#{$str}"
+  
+  @if type-of($search) != string
+    $search: "#{$search}"
+
+  $index: string.index($str, $search)
+
+  @if type-of($index) == number
+    @return true
+  
+  @return false

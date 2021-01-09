@@ -1,0 +1,33 @@
+@use "sass:map"
+
+@function to-rgba($hex, $opacity)
+
+  // [34234] We don't want to give a opacity for all color values
+  @if type-of($hex) == color
+
+    @if $hex == transparent or $hex == currentColor
+      @return $hex
+    @return rgba($hex, $opacity)
+    
+  @if type-of($hex) == map
+    $return: ()
+    @each $color-key, $color-value in $hex
+      @if type-of($color-value) != map
+
+        // [34234]
+        @if $color-value == transparent or $color-value == currentColor
+          $return: map.deep-merge(($color-key: $color-value), $return)
+        @else
+          $return: map.deep-merge(($color-key: rgba($color-value, $opacity)), $return)
+
+      @else
+        @each $color-value-key, $color-value-value in $color-value
+          $seperator: if($color-value-key != "", "-", "")
+
+          // [34234]
+          @if $color-value == transparent or $color-value == currentColor
+            $return: map.deep-merge($return, (#{$color-key}#{$seperator}#{$color-value-key}: $color-value-value))
+          @else
+            $return: map.deep-merge($return, (#{$color-key}#{$seperator}#{$color-value-key}: rgba($color-value-value, $opacity)))
+    
+    @return $return

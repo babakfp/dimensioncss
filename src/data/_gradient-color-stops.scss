@@ -1,0 +1,20 @@
+@use "sass:map";
+
+$dimensioncss: map.deep-merge((utilities: (
+  grid-column: (
+    class: (
+      from: (
+        --gradient-from: VALUE,
+        --gradient-stops: "var(--gradient-from), var(--gradient-to, VALUE)",
+      ),
+      via: (
+        --gradient-stops: "var(--gradient-from), VALUE, var(--gradient-to, VALUE)",
+      ),
+      to: (
+        --gradient-to: VALUE,
+      ),
+    ),
+    value: map.get($dimensioncss, theme, colors),
+    variant: responsive,
+  )
+)), $dimensioncss);

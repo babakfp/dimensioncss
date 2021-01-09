@@ -1,0 +1,52 @@
+@use "sass:map"
+@use "type-check-functions" as *
+@use "type-convert-functions" as *
+@use "free-css-option" as *
+@use "validate-options" as validate-option
+@use "rest-of-the-action" as *
+
+
+
+@mixin dimensioncss-print-styles
+
+  // Looping the utility map.
+  @each $utility-name, $utility-options in map.get($dimensioncss, utilities)
+
+    $free-css: validate-option.free-css(map.get($utility-options, free-css))
+    @include print-free-css-option($free-css)
+
+    // Remove the option from the utility options map because we don't need it anywhere else.
+    $utility-options: map.deep-remove($utility-options, free-css)
+
+    @include get-styles-to-print($utility-name, $utility-options, "")
+
+
+
+@mixin dimensioncss-print-responsive-styles
+
+  $variant-suffix: map.get($dimensioncss, settings, variant-suffix)
+
+  // Looping the screens map.
+  @each $breakpoint-class, $breakpoint-value in map.get($dimensioncss, theme, screens)
+
+    // because the structure of the responsive print is different(we are using 2 mixins, one for normal styles and one for responsive), we needed to define it hire rather than with the other variants.
+    $breakpoint-class: $breakpoint-class + $variant-suffix
+      
+    // CSS media query
+    @media (min-width: #{$breakpoint-value})
+
+      // Looping the utility map.
+      @each $utility-name, $utility-options in map.get($dimensioncss, utilities)
+
+        $variants: validate-option.variants(map.get($utility-options, variants))
+
+        // Remove the option from the utility options map because we don't need it in responsive.
+        $utility-options: map.deep-remove($utility-options, free-css)
+        
+        @if index($variants, responsive)
+          @include get-styles-to-print($utility-name, $utility-options, $breakpoint-class)
+
+
+
+@include dimensioncss-print-styles
+@include dimensioncss-print-responsive-styles

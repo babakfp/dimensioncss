@@ -1,0 +1,31 @@
+@use "sass:map"
+@use "./type-check" as *
+
+
+// param $prop as any = the value that going to converted to a map.
+@function to-map($prop)
+
+  @if is-null($prop) or is-map($prop)
+    @return $prop
+
+  @else if is-str($prop) or is-num($prop) or is-color($prop)
+    @return ($prop: $prop)
+
+  @else if is-list($prop)
+    $map: ()
+    @each $item in $prop
+      @if is-map($item)
+        @each $item-key, $item-value in $item
+          $map: map.deep-merge(($item-key: $item-value), $map)
+      @else
+        $map: map.deep-merge(($item: $item), $map)
+    @return $map
+
+  @else
+    @error "Something went wrong!"
+
+
+// it's just returns the value of the inspect functions.
+// param $prop as any = the value that going to converted to a str.
+@function to-str($prop)
+  @return inspect($prop)

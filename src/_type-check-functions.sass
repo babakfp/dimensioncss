@@ -1,0 +1,27 @@
+
+@function is-str($prop)
+  @return type-of($prop) == string
+
+
+@function is-bool($prop)
+  @return type-of($prop) == bool
+
+
+@function is-num($prop)
+  @return type-of($prop) == number
+
+
+@function is-map($prop)
+  @return type-of($prop) == map
+
+
+@function is-list($prop)
+  @return type-of($prop) == list
+
+
+@function is-color($prop)
+  @return type-of($prop) == color
+
+
+@function is-null($prop)
+  @return $prop == null
