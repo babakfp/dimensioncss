@@ -4,5 +4,5 @@ $dimensioncss: map.deep-merge((utilities: (
   border-collapse: (
     class: border,
     value: collapse separate,
-  )
+  ),
 )), $dimensioncss);

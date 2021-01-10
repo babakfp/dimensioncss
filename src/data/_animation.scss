@@ -9,6 +9,6 @@ $dimensioncss: map.deep-merge((utilities: (
       pulse:  "pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       bounce: "bounce 1s infinite"
     ),
-    variant: responsive
+    variant: responsive,
   ),
 )), $dimensioncss);

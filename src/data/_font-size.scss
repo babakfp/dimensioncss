@@ -18,6 +18,6 @@ $dimensioncss: map.deep-merge((utilities: (
       8xl:  6rem      (line-height: 1),
       9xl:  8rem      (line-height: 1),
     ),
-    variant: responsive
-  )
+    variant: responsive,
+  ),
 )), $dimensioncss);

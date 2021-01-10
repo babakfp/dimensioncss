@@ -4,6 +4,6 @@ $dimensioncss: map.deep-merge((utilities: (
   flex-wrap: (
     class: flex,
     value: wrap wrap-reverse nowrap,
-    variant: responsive
-  )
+    variant: responsive,
+  ),
 )), $dimensioncss);

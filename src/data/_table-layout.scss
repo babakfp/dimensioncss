@@ -4,5 +4,5 @@ $dimensioncss: map.deep-merge((utilities: (
   table-layout: (
     class: table,
     value: auto fixed,
-  )
+  ),
 )), $dimensioncss);

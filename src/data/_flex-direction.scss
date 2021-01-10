@@ -4,6 +4,6 @@ $dimensioncss: map.deep-merge((utilities: (
   flex-direction: (
     class: flex,
     value: row row-reverse column column-reverse,
-    variant: responsive
-  )
+    variant: responsive,
+  ),
 )), $dimensioncss);

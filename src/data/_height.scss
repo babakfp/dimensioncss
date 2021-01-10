@@ -23,6 +23,6 @@ $dimensioncss: map.deep-merge((utilities: (
       full: 100%,
       screen: 100vh,
     ),
-    variant: responsive
-  )
+    variant: responsive,
+  ),
 )), $dimensioncss);

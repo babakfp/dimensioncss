@@ -4,6 +4,6 @@ $dimensioncss: map.deep-merge((utilities: (
   overflow: (
     class: overflow overflow-x overflow-y,
     value: auto hidden visible scroll,
-    variant: responsive
-  )
+    variant: responsive,
+  ),
 )), $dimensioncss);

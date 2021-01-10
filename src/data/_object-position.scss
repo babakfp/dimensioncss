@@ -3,13 +3,12 @@
 $dimensioncss: map.deep-merge((utilities: (
   object-position: (
     class: object,
-    value: bottom center left (
+    value: top right bottom left center (
       left-bottom: "left bottom",
       left-top: "left top",
-    ) right (
       right-bottom: "right bottom",
       right-top: "right top",
-    ) top,
-    variant: responsive
-  )
+    ),
+    variant: responsive,
+  ),
 )), $dimensioncss);

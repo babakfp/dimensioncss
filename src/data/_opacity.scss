@@ -26,5 +26,5 @@ $dimensioncss: map.deep-merge((utilities: (
       100: 1,
     ),
     variant: group-hover focus-within hover focus
-  )
+  ),
 )), $dimensioncss);

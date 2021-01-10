@@ -26,5 +26,5 @@ $dimensioncss: map.deep-merge((utilities: (
       ),
     ),
     value: to-rgba(map.get($dimensioncss, theme, colors), var(--border-opacity)),
-  )
+  ),
 )), $dimensioncss);

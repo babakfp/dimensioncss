@@ -7,6 +7,6 @@ $dimensioncss: map.deep-merge((utilities: (
       row-end: grid-row-end,
     ),
     value: 1 2 3 4 5 6 7 auto,
-    variant: responsive
-  )
+    variant: responsive,
+  ),
 )), $dimensioncss);

@@ -34,7 +34,7 @@ $dimensioncss: map.deep-merge(
           transition-duration: 150ms
         )
       ),
-      variant: responsive
+      variant: responsive,
     ),
     transition-timing-function: (
       class: ease,

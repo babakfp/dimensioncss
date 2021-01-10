@@ -8,6 +8,6 @@ $dimensioncss: map.deep-merge((utilities: (
       overscroll-y: overscroll-behavior-y,
     ),
     value: auto contain none,
-    variant: responsive
-  )
+    variant: responsive,
+  ),
 )), $dimensioncss);

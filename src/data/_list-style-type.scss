@@ -5,5 +5,5 @@ $dimensioncss: map.deep-merge((utilities: (
     class: list,
     value: none disc decimal,
     variant: first last first-type last-type odd even hover
-  )
+  ),
 )), $dimensioncss);

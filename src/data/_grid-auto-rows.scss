@@ -8,6 +8,6 @@ $dimensioncss: map.deep-merge((utilities: (
       max: max-content,
       fr: minmax(0, 1fr)
     ),
-    variant: responsive
-  )
+    variant: responsive,
+  ),
 )), $dimensioncss);
