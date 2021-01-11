@@ -35,7 +35,7 @@
         @error "invalid key type"
 
       @else if not is-list($vv) and not is-map($vv)
-        $return: map.deep-merge($return, ($vk: $vv))
+        $return: map.deep-merge(($vk: $vv), $return)
 
       @else if is-list($vv)
         @if list.length($vv) > 2
@@ -43,7 +43,7 @@
         @else
           @if not is-map(list.nth($vv, 2))
             @error "Invalid type"
-          $return: map.deep-merge($return, ($vk: $vv))
+          $return: map.deep-merge(($vk: $vv), $return)
 
       @else if is-map($vv)
         @each $vvk, $vvv in $vv
@@ -55,7 +55,7 @@
             @if not is-null($vk) and not is-null($vvk) and not is-empty-str($vk) and not is-empty-str($vvk)
               $seperator: "-"
         
-            $return: map.deep-merge($return, (#{$vk}#{$seperator}#{$vvk}: $vvv))
+            $return: map.deep-merge((#{$vk}#{$seperator}#{$vvk}: $vvv), $return)
 
     @return $return
   

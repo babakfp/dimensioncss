@@ -31,7 +31,7 @@
       @else if is-str($c)
         // individual item from the class list as a str type value
         // example from abov: overflow
-        $return: map.deep-merge($return, ($c: ($c: VALUE)))
+        $return: map.deep-merge(($c: ($c: VALUE)), $return)
     
       @else if is-map($c)
         // example: gap (gap-x: column-gap, gap-y: row-gap)
@@ -43,13 +43,13 @@
 
           @if is-str($cv)
             // individual map key from the class map as a str type value
-            $return: map.deep-merge($return, ($ck: ($cv: VALUE)))
+            $return: map.deep-merge(($ck: ($cv: VALUE)), $return)
             
           @else if is-map($cv)
             // example: gap (-mt: (margin-top: -VALUE))
             // @each $cvk, $cvv in $cv
               // $return: map.deep-merge($return, ($ck: ($cvk: $cvv)))
-            $return: map.deep-merge($return, ($ck: $cv))
+            $return: map.deep-merge(($ck: $cv), $return)
     
     @return $return
 
@@ -63,7 +63,7 @@
     @each $ck, $cv in $class
 
       @if is-str($cv)
-        $return: map.deep-merge($return, ($ck: ($cv: VALUE)))
+        $return: map.deep-merge(($ck: ($cv: VALUE)), $return)
       
       @else if is-list($cv)
         // example: (mx: margin-left margin-right)
@@ -71,19 +71,19 @@
 
           @if is-str($cvi)
             // example from abov: margin-left
-            $return: map.deep-merge($return, ($ck: ($cvi: VALUE)))
+            $return: map.deep-merge(($ck: ($cvi: VALUE)), $return)
             
           @else if is-map($cvi)
             // example: (-mx: (margin-left: -VALUE) something))
             // @each $cvik, $cviv in $cvi
               // $return: map.deep-merge($return, ($ck: ($cvik: $cviv)))
-            $return: map.deep-merge($return, ($ck: $cvi))
+            $return: map.deep-merge(($ck: $cvi), $return)
 
       @else if is-map($cv)
         // example: (-mx: (margin-left: -VALUE)
         // @each $cvk, $cvv in $cv
           // $return: map.deep-merge($return, ($ck: ($cvk: $cvv)))
-        $return: map.deep-merge($return, ($ck: $cv))
+        $return: map.deep-merge(($ck: $cv), $return)
 
     @return $return
 
