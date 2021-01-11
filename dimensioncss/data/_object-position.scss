@@ -3,11 +3,16 @@
 $dimensioncss: map.deep-merge((utilities: (
   object-position: (
     class: object,
-    value: top right bottom left center (
-      left-bottom: "left bottom",
-      left-top: "left top",
-      right-bottom: "right bottom",
-      right-top: "right top",
+    value: (
+      t: top,
+      r: right,
+      b: bottom,
+      l: left,
+      c: center,
+      lb: "left bottom",
+      lt: "left top",
+      rb: "right bottom",
+      rt: "right top",
     ),
     variant: responsive,
   ),
