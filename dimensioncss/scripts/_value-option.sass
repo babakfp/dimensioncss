@@ -55,7 +55,7 @@
             @if not is-null($vk) and not is-null($vvk) and not is-empty-str($vk) and not is-empty-str($vvk)
               $seperator: "-"
         
-            $return: map.deep-merge((#{$vk}#{$seperator}#{$vvk}: $vvv), $return)
+            $return: map.deep-merge($return, (#{$vk}#{$seperator}#{$vvk}: $vvv))
 
     @return $return
   
