@@ -16,96 +16,97 @@ $dimensioncss: (
 // TODO Container | https://tailwindcss.com/docs/container
 // Not Needed Box Sizing | https://tailwindcss.com/docs/box-sizing
 @import "./display";
-@import "./float";
+// @import "./float";
 // Not Needed Clear | https://tailwindcss.com/docs/clear
-@import "./object-fit";
-@import "./object-position";
-@import "./overflow";
-@import "./overscroll-behavior";
-@import "./position";
-@import "./inset";
-@import "./visibility";
-@import "./z-index";
+// @import "./object-fit";
+// @import "./object-position";
+// @import "./overflow";
+// @import "./overscroll-behavior";
+// @import "./position";
+// @import "./inset";
+// @import "./visibility";
+// @import "./z-index";
 
 // # FLEXBOX
-@import "./flex-direction";
-@import "./flex-wrap";
-@import "./flex";
-@import "./flex-grow-flex-shrink";
-@import "./order";
+// @import "./flex-direction";
+// @import "./flex-wrap";
+// @import "./flex";
+// @import "./flex-grow-flex-shrink";
+// @import "./order";
 
 // # GRID
-@import "./grid-template-columns";
-@import "./grid-column-start-grid-column-end";
-@import "./grid-column";
-@import "./grid-template-rows";
-@import "./grid-row-start-grid-row-end";
-@import "./grid-row";
-@import "./grid-auto-flow";
-@import "./grid-auto-columns";
-@import "./grid-auto-rows";
-@import "./gap";
+// @import "./grid-template-columns";
+// @import "./grid-column-start-grid-column-end";
+// @import "./grid-column";
+// @import "./grid-template-rows";
+// @import "./grid-row-start-grid-row-end";
+// @import "./grid-row";
+// @import "./grid-auto-flow";
+// @import "./grid-auto-columns";
+// @import "./grid-auto-rows";
+// @import "./gap";
 
 // # BOX ALIGNMENT
-@import "./box-alignment";
+// @import "./box-alignment";
 
 // # SPACING
-@import "./padding";
-@import "./margin";
+// @import "./padding";
+// @import "./margin";
 // TODO Space  | https://tailwindcss.com/docs/space
 
 // # SIZING
-@import "./width";
-@import "./min-width";
-@import "./max-width";
-@import "./height";
-@import "./min-height";
-@import "./max-height";
+// @import "./width";
+// @import "./min-width";
+// @import "./max-width";
+// @import "./height";
+// @import "./min-height";
+// @import "./max-height";
 
 // # TYPOGRAPHY
-@import "./font-family";
-@import "./font-size";
-@import "./font-smoothing";
-@import "./font-style";
-@import "./font-weight";
-@import "./font-variant-numeric";
-@import "./letter-spacing";
-@import "./line-height";
-@import "./list-style-type";
-@import "./list-style-position";
-@import "./placeholder-color";
-@import "./placeholder-opacity";
-@import "./text-align";
-@import "./text-color";
-@import "./text-opacity";
-@import "./text-decoration";
-@import "./text-transform";
-@import "./text-overflow";
+// @import "./font-family";
+// @import "./font-size";
+// @import "./font-smoothing";
+// @import "./font-style";
+// @import "./font-weight";
+// @import "./font-variant-numeric";
+// @import "./letter-spacing";
+// @import "./line-height";
+// @import "./list-style-type";
+// @import "./list-style-position";
+// @import "./placeholder-color";
+// @import "./placeholder-opacity";
+// @import "./text-align";
+// @import "./text-color";
+// @import "./text-opacity";
+// @import "./text-decoration";
+// @import "./text-transform";
+// @import "./text-overflow";
 // Vertical Alignment - Maybe don't needed?!
-@import "./white-space";
-@import "./word-break";
+// @import "./white-space";
+// @import "./word-break";
 
 // # BACKGROUNDS
-@import "./background-attachment";
-@import "./background-clip";
-@import "./background-color";
-@import "./background-opacity";
-@import "./background-position";
-@import "./background-repeat";
-@import "./background-size";
-@import "./background-image";
-@import "./gradient-color-stops";
+// @import "./background-attachment";
+// @import "./background-clip";
+// @import "./background-color";
+// @import "./background-opacity";
+// @import "./background-position";
+// @import "./background-repeat";
+// @import "./background-size";
+// @import "./background-image";
+// @import "./gradient-color-stops";
 
 // # BORDERS
-@import "./border-radius";
-@import "./border-width";
-@import "./border-color";
-@import "./border-opacity";
-@import "./border-style";
+// @import "./border-radius";
+// @import "./border-width";
+// @import "./border-color";
+// @import "./border-opacity";
+// @import "./border-style";
 // Divide Width
 // Divide Color
 // Divide Opacity
 // Divide Style
+// @import "./ring-width";
 // Ring Width
 // Ring Color
 // Ring Opacity
@@ -113,40 +114,40 @@ $dimensioncss: (
 // Ring Offset Color
 
 // # EFFECTS
-@import "./box-shadow";
-@import "./opacity";
+// @import "./box-shadow";
+// @import "./opacity";
 
 // # TABLES
-@import "./border-collapse";
-@import "./table-layout";
+// @import "./border-collapse";
+// @import "./table-layout";
 
 // # TRANSITIONS AND ANIMATION
-@import "./transition-property";
-@import "./transition-duration-transition-delay";
-@import "./transition-timing-function";
-@import "./animation";
+// @import "./transition-property";
+// @import "./transition-duration-transition-delay";
+// @import "./transition-timing-function";
+// @import "./animation";
 
 // # TRANSFORMS
-@import "./transform";
-@import "./transform-origin";
-@import "./scale";
-@import "./rotate";
-@import "./translate";
-@import "./skew";
+// @import "./transform";
+// @import "./transform-origin";
+// @import "./scale";
+// @import "./rotate";
+// @import "./translate";
+// @import "./skew";
 
 // # INTERACTIVITY
-@import "./appearance";
-@import "./cursor";
-@import "./outline";
-@import "./pointer-events";
-@import "./resize";
-@import "./user-select";
+// @import "./appearance";
+// @import "./cursor";
+// @import "./outline";
+// @import "./pointer-events";
+// @import "./resize";
+// @import "./user-select";
 
 // # SVG
-@import "./svg";
+// @import "./svg";
 
 // # ACCESSIBILITY
-@import "./screen-readers";
+// @import "./screen-readers";
 
 // # OFFICIAL PLUGINS
 // SASS Font Face

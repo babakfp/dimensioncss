@@ -4,6 +4,6 @@ $dimensioncss: map.deep-merge((utilities: (
   display: (
     class: "",
     value: block inline inline-block flex inline-flex grid inline-grid table table-caption table-cell table-column table-column-group table-footer-group table-header-group table-row-group table-row flow-root contents (hidden: none),
-    variant: responsive,,
+    variant: responsive,
   ),
 )), $dimensioncss);
