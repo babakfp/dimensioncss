@@ -5,10 +5,5 @@
   "license": "GPL-3.0",
   "description": "A utility-first CSS framework for rapid UI development.",
   "repository": "https://github.com/babakfp/dimensioncss",
-  "author": "babakfp",
-  "scripts": {
-    "demo": "sass --no-source-map demo/index.sass:demo/index.css",
-    "watch": "sass --no-source-map --watch test/index.sass:test/index.css",
-    "start": "sass --no-source-map test/index.sass:test/index.css"
-  }
+  "author": "babakfp"
 }
