@@ -16,97 +16,97 @@ $dimensioncss: (
 // TODO Container | https://tailwindcss.com/docs/container
 // Not Needed Box Sizing | https://tailwindcss.com/docs/box-sizing
 @import "./data/display";
-// @import "./data/float";
+@import "./data/float";
 // Not Needed Clear | https://tailwindcss.com/docs/clear
-// @import "./data/object-fit";
-// @import "./data/object-position";
-// @import "./data/overflow";
-// @import "./data/overscroll-behavior";
-// @import "./data/position";
-// @import "./data/inset";
-// @import "./data/visibility";
-// @import "./data/z-index";
+@import "./data/object-fit";
+@import "./data/object-position";
+@import "./data/overflow";
+@import "./data/overscroll-behavior";
+@import "./data/position";
+@import "./data/inset";
+@import "./data/visibility";
+@import "./data/z-index";
 
 // # FLEXBOX
-// @import "./data/flex-direction";
-// @import "./data/flex-wrap";
-// @import "./data/flex";
-// @import "./data/flex-grow-flex-shrink";
-// @import "./data/order";
+@import "./data/flex-direction";
+@import "./data/flex-wrap";
+@import "./data/flex";
+@import "./data/flex-grow-flex-shrink";
+@import "./data/order";
 
 // # GRID
-// @import "./data/grid-template-columns";
-// @import "./data/grid-column-start-grid-column-end";
-// @import "./data/grid-column";
-// @import "./data/grid-template-rows";
-// @import "./data/grid-row-start-grid-row-end";
-// @import "./data/grid-row";
-// @import "./data/grid-auto-flow";
-// @import "./data/grid-auto-columns";
-// @import "./data/grid-auto-rows";
-// @import "./data/gap";
+@import "./data/grid-template-columns";
+@import "./data/grid-column-start-grid-column-end";
+@import "./data/grid-column";
+@import "./data/grid-template-rows";
+@import "./data/grid-row-start-grid-row-end";
+@import "./data/grid-row";
+@import "./data/grid-auto-flow";
+@import "./data/grid-auto-columns";
+@import "./data/grid-auto-rows";
+@import "./data/gap";
 
 // # BOX ALIGNMENT
-// @import "./data/box-alignment";
+@import "./data/box-alignment";
 
 // # SPACING
-// @import "./data/padding";
-// @import "./data/margin";
+@import "./data/padding";
+@import "./data/margin";
 // TODO Space  | https://tailwindcss.com/docs/space
 
 // # SIZING
-// @import "./data/width";
-// @import "./data/min-width";
-// @import "./data/max-width";
-// @import "./data/height";
-// @import "./data/min-height";
-// @import "./data/max-height";
+@import "./data/width";
+@import "./data/min-width";
+@import "./data/max-width";
+@import "./data/height";
+@import "./data/min-height";
+@import "./data/max-height";
 
 // # TYPOGRAPHY
-// @import "./data/font-family";
-// @import "./data/font-size";
-// @import "./data/font-smoothing";
-// @import "./data/font-style";
-// @import "./data/font-weight";
-// @import "./data/font-variant-numeric";
-// @import "./data/letter-spacing";
-// @import "./data/line-height";
-// @import "./data/list-style-type";
-// @import "./data/list-style-position";
-// @import "./data/placeholder-color";
-// @import "./data/placeholder-opacity";
-// @import "./data/text-align";
-// @import "./data/text-color";
-// @import "./data/text-opacity";
-// @import "./data/text-decoration";
-// @import "./data/text-transform";
-// @import "./data/text-overflow";
+@import "./data/font-family";
+@import "./data/font-size";
+@import "./data/font-smoothing";
+@import "./data/font-style";
+@import "./data/font-weight";
+@import "./data/font-variant-numeric";
+@import "./data/letter-spacing";
+@import "./data/line-height";
+@import "./data/list-style-type";
+@import "./data/list-style-position";
+@import "./data/placeholder-color";
+@import "./data/placeholder-opacity";
+@import "./data/text-align";
+@import "./data/text-color";
+@import "./data/text-opacity";
+@import "./data/text-decoration";
+@import "./data/text-transform";
+@import "./data/text-overflow";
 // Vertical Alignment - Maybe don't needed?!
-// @import "./data/white-space";
-// @import "./data/word-break";
+@import "./data/white-space";
+@import "./data/word-break";
 
 // # BACKGROUNDS
-// @import "./data/background-attachment";
-// @import "./data/background-clip";
-// @import "./data/background-color";
-// @import "./data/background-opacity";
-// @import "./data/background-position";
-// @import "./data/background-repeat";
-// @import "./data/background-size";
-// @import "./data/background-image";
-// @import "./data/gradient-color-stops";
+@import "./data/background-attachment";
+@import "./data/background-clip";
+@import "./data/background-color";
+@import "./data/background-opacity";
+@import "./data/background-position";
+@import "./data/background-repeat";
+@import "./data/background-size";
+@import "./data/background-image";
+@import "./data/gradient-color-stops";
 
 // # BORDERS
-// @import "./data/border-radius";
-// @import "./data/border-width";
-// @import "./data/border-color";
-// @import "./data/border-opacity";
-// @import "./data/border-style";
+@import "./data/border-radius";
+@import "./data/border-width";
+@import "./data/border-color";
+@import "./data/border-opacity";
+@import "./data/border-style";
 // Divide Width
 // Divide Color
 // Divide Opacity
 // Divide Style
-// @import "./data/ring-width";
+@import "./data/ring-width";
 // Ring Width
 // Ring Color
 // Ring Opacity
@@ -114,40 +114,40 @@ $dimensioncss: (
 // Ring Offset Color
 
 // # EFFECTS
-// @import "./data/box-shadow";
-// @import "./data/opacity";
+@import "./data/box-shadow";
+@import "./data/opacity";
 
 // # TABLES
-// @import "./data/border-collapse";
-// @import "./data/table-layout";
+@import "./data/border-collapse";
+@import "./data/table-layout";
 
 // # TRANSITIONS AND ANIMATION
-// @import "./data/transition-property";
-// @import "./data/transition-duration-transition-delay";
-// @import "./data/transition-timing-function";
-// @import "./data/animation";
+@import "./data/transition-property";
+@import "./data/transition-duration-transition-delay";
+@import "./data/transition-timing-function";
+@import "./data/animation";
 
 // # TRANSFORMS
-// @import "./data/transform";
-// @import "./data/transform-origin";
-// @import "./data/scale";
-// @import "./data/rotate";
-// @import "./data/translate";
-// @import "./data/skew";
+@import "./data/transform";
+@import "./data/transform-origin";
+@import "./data/scale";
+@import "./data/rotate";
+@import "./data/translate";
+@import "./data/skew";
 
 // # INTERACTIVITY
-// @import "./data/appearance";
-// @import "./data/cursor";
-// @import "./data/outline";
-// @import "./data/pointer-events";
-// @import "./data/resize";
-// @import "./data/user-select";
+@import "./data/appearance";
+@import "./data/cursor";
+@import "./data/outline";
+@import "./data/pointer-events";
+@import "./data/resize";
+@import "./data/user-select";
 
 // # SVG
-// @import "./data/svg";
+@import "./data/svg";
 
 // # ACCESSIBILITY
-// @import "./data/screen-readers";
+@import "./data/screen-readers";
 
 // # OFFICIAL PLUGINS
 // SASS Font Face

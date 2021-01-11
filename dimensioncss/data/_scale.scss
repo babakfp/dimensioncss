@@ -19,6 +19,6 @@ $dimensioncss: map.deep-merge((utilities: (
       125: 1.25,
       150: 1.5,
     ),
-    variant: responsive, hover focus,
+    variant: responsive hover focus,
   ),
 )), $dimensioncss);
