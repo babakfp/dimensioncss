@@ -10,7 +10,7 @@ $dimensioncss: map.deep-merge((utilities: (
       border-l: border-left-width,
     ),
     value: (
-      DEFAULT: 1px,
+      "": 1px,
       0: 0,
       2: 2px,
       3: 3px,

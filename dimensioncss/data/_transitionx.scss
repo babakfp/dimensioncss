@@ -51,7 +51,7 @@ $dimensioncss: map.deep-merge(
         delay: transition-delay,
       ),
       value: (
-        DEFAULT: 150ms,
+        "": 150ms,
         75: 75ms,
         100: 100ms,
         150: 150ms,
