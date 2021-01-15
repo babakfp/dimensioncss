@@ -26,8 +26,8 @@
 
           // [34234]
           @if $color-value == transparent or $color-value == currentColor
-            $return: map.deep-merge($return, (#{$color-key}#{$seperator}#{$color-value-key}: $color-value-value))
+            $return: map.deep-merge((#{$color-key}#{$seperator}#{$color-value-key}: $color-value-value), $return)
           @else
-            $return: map.deep-merge($return, (#{$color-key}#{$seperator}#{$color-value-key}: rgba($color-value-value, $opacity)))
+            $return: map.deep-merge((#{$color-key}#{$seperator}#{$color-value-key}: rgba($color-value-value, $opacity)), $return)
     
     @return $return

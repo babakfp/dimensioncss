@@ -290,6 +290,32 @@ video {
   height: auto;
 }
 
+:root {
+  --text-opacity: 1;
+  --bg-opacity: 1;
+  --border-opacity: 1;
+  --gradient-from: transparent;
+  --gradient-to: transparent;
+  --gradient-stops: null;
+  --placeholder-opacity: 1;
+  --ring-inset: null;
+  --ring-offset-width: 1;
+  --ring-color: transparent;
+  --ring-offset-color: white;
+  --ring-color: transparent;
+  --ring-opacity: 1;
+  --translate-x: 0;
+  --translate-y: 0;
+  --rotate: 0;
+  --skew-x: 0;
+  --skew-y: 0;
+  --scale-x: 1;
+  --scale-y: 1;
+  --space-x-reverse: null;
+  --space-y-reverse: null;
+  --divide-opacity: 1;
+}
+
 .block {
   display: block;
 }
