@@ -1,33 +1,59 @@
 @use "sass:map"
+@use "./type-check" as *
 
-@function to-rgba($hex, $opacity)
 
-  // [34234] We don't want to give a opacity for all color values
-  @if type-of($hex) == color
+@function to-rgba($color, $opacity)
 
-    @if $hex == transparent or $hex == currentColor
-      @return $hex
-    @return rgba($hex, $opacity)
-    
-  @if type-of($hex) == map
+
+
+  @if type-of($color) == color
+    //^ example of intered $color variable value: gray, #FFF.
+
+    @if $color == transparent or $color == currentColor
+      //^ Ignore those from converting to RGBA because it does not make sense.
+      @return $color
+
+    @return rgba($color, $opacity)
+
+
+
+  @else if type-of($color) == map
+    //^ example of intered $color variable value: (white: #FFF) and (white: (000: #FFF)).
+
     $return: ()
-    @each $color-key, $color-value in $hex
-      @if type-of($color-value) != map
+    
+    @each $k, $v in $color
 
-        // [34234]
-        @if $color-value == transparent or $color-value == currentColor
-          $return: map.deep-merge(($color-key: $color-value), $return)
-        @else
-          $return: map.deep-merge(($color-key: rgba($color-value, $opacity)), $return)
+      @if is-map($v)
+        //^ example of intered $color variable value: (white: (000: #FFF)).
+
+        @each $vk, $vv in $v
+
+          // This is for the default value. example: (white: ("": #FFF, 100: #FCFCFC)) -(result)> .white:white and .white-100:#FCFCFC.
+          $seperator: if($vk != "", "-", "")
+
+          @if $v == transparent or $v == currentColor
+            $return: map.deep-merge((#{$k}#{$seperator}#{$vk}: $vv), $return)
+          @else
+            $return: map.deep-merge((#{$k}#{$seperator}#{$vk}: rgba($vv, $opacity)), $return)
+
+
+      @else if is-list($v) or is-bool($v)
+        @error "UnExpected Type"
+
 
       @else
-        @each $color-value-key, $color-value-value in $color-value
-          $seperator: if($color-value-key != "", "-", "")
+        //^ example of intered $color variable value: (white: #FFF).
 
-          // [34234]
-          @if $color-value == transparent or $color-value == currentColor
-            $return: map.deep-merge((#{$color-key}#{$seperator}#{$color-value-key}: $color-value-value), $return)
-          @else
-            $return: map.deep-merge((#{$color-key}#{$seperator}#{$color-value-key}: rgba($color-value-value, $opacity)), $return)
+        @if $v == transparent or $v == currentColor
+          $return: map.deep-merge(($k: $v), $return)
+        @else
+          $return: map.deep-merge(($k: rgba($v, $opacity)), $return)
+
     
     @return $return
+
+
+
+  @else 
+    @error "UnExpected Type"
