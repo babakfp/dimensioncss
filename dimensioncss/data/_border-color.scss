@@ -4,26 +4,11 @@
 $dimensioncss: map.deep-merge((utilities: (
   border-color: (
     class: (
-      border: (
-        --border-opacity: 1,
-        border-color: VALUE,
-      ),
-      border-t: (
-        --border-opacity: 1,
-        border-color: VALUE,
-      ),
-      border-r: (
-        --border-opacity: 1,
-        border-color: VALUE,
-      ),
-      border-b: (
-        --border-opacity: 1,
-        border-color: VALUE,
-      ),
-      border-l: (
-        --border-opacity: 1,
-        border-color: VALUE,
-      ),
+      border: border-color,
+      border-t: border-color,
+      border-r: border-color,
+      border-b: border-color,
+      border-l: border-color,
     ),
     value: to-rgba(map.get($dimensioncss, theme, colors), var(--border-opacity)),
   ),
