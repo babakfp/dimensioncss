@@ -1,6 +1,7 @@
 @use "sass:map"
 @use "./option-validation" as *
 @import "./print-two"
+@import "../modules/type-validation"
 
 
 @mixin dimensioncss-print-styles
@@ -38,5 +39,6 @@
 
 
 @import "./root-styles"
+
 @include dimensioncss-print-styles
 @include dimensioncss-print-responsive-styles

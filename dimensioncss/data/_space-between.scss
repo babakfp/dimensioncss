@@ -1,0 +1,14 @@
+@use "sass:map";
+
+$dimensioncss: map.deep-merge((utilities: (
+  space-between: (
+    class: (
+      space-x: margin-right margin-left,
+      space-y: margin-top margin-bottom,
+      -space-x: (margin-right: -VALUE, margin-left: -VALUE),
+      -space-y: (margin-top: -VALUE, margin-bottom: -VALUE),
+    ),
+    value: map.get($dimensioncss, theme, spacing),
+    variant: responsive,
+  ),
+)), $dimensioncss);

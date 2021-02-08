@@ -1,0 +1,10 @@
+@use "sass:map";
+@use "../modules/to-rgba" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  ring-color: (
+    class: (ring: --ring-color),
+    value: to-rgba(map.get($dimensioncss, theme, colors), var(--ring-opacity)),
+    variant: focus-within focus dark,
+  ),
+)), $dimensioncss);

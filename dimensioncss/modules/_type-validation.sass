@@ -1,0 +1,13 @@
+@use "sass:list"
+
+// $data: the variable or data that you want to assign the types.
+// $types: the types that you want to assign to the $data.
+// example:
+// $my-name: 'babak'
+// $type-validation: type-validation($my-name, string)
+// $type-validation: type-validation($my-name, number, map)
+@function type-validation($data, $types...)
+  @each $type in $types
+    @if type-of($data) != $type
+      @error "ERROR UNEXPECTED TYPE ||| expected-type: #{$types} ||| received-type: #{type-of($data)}"
+  @return null

@@ -1,8 +1,8 @@
 @use "sass:map";
 
 $dimensioncss: map.deep-merge((utilities: (
-  border-opacity: (
-    class: (border-opacity: --border-opacity),
+  divide-opacity: (
+    class: (divide-opacity: --divide-opacity),
     value: (
       0: 0,
       5: .05,
@@ -26,6 +26,6 @@ $dimensioncss: map.deep-merge((utilities: (
       95: .95,
       100: 1,
     ),
-    variant: first last first-type last-type odd even visited checked group-hover group-focus focus-within hover focus focus-visible active disabled,
+    variant: dark,
   ),
 )), $dimensioncss);

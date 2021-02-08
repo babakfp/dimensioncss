@@ -1,0 +1,19 @@
+@use "sass:map";
+
+$dimensioncss: map.deep-merge((utilities: (
+  ring-offset-width: (
+    class: (
+      ring-offset: (
+        --ring-offset-width: VALUE,
+        box-shadow: "0 0 0 var(--ring-offset-width) var(--ring-offset-color), var(--ring-shadow)",
+      ),
+    ),
+    value: (
+      "": 2px,
+      0: 0,
+      1: 1px,
+      3: 3px,
+    ),
+    variant: focus-within focus,
+  ),
+)), $dimensioncss);

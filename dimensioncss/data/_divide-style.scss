@@ -1,0 +1,8 @@
+@use "sass:map";
+
+$dimensioncss: map.deep-merge((utilities: (
+  divide-style: (
+    class: divide,
+    value: solid dashed dotted double (style: none),
+  ),
+)), $dimensioncss);

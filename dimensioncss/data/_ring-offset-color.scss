@@ -1,0 +1,14 @@
+@use "sass:map";
+@use "../modules/to-rgba" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  ring-offset-color: (
+    class: (
+      ring-offset: (
+        --ring-offset-color: VALUE,
+        box-shadow: "0 0 0 var(--ring-offset-width) var(--ring-offset-color), var(--ring-shadow)",
+      )),
+    value: to-rgba(map.get($dimensioncss, theme, colors), var(--ring-opacity)),
+    variant: focus-within focus dark,
+  ),
+)), $dimensioncss);

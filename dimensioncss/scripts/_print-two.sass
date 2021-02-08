@@ -51,7 +51,7 @@ $_variant-suffix: map.get($dimensioncss, settings, variant-suffix)
         @each $key, $value in $nth-2
           $class-value: map.deep-merge(($key: $value), $class-value)
 
-        @include take-class-and-values($class-key +$seperator+ $value-key, $nth-1, $class-value, $variant, $breakpoint-className)
+        @include take-class-and-values($utility-name, $class-key +$seperator+ $value-key, $nth-1, $class-value, $variant, $breakpoint-className)
            
       @else
-        @include take-class-and-values($class-key +$seperator+ $value-key, $value-value, $class-value, $variant, $breakpoint-className)
+        @include take-class-and-values($utility-name, $class-key +$seperator+ $value-key, $value-value, $class-value, $variant, $breakpoint-className)

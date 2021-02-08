@@ -2,30 +2,23 @@
 
 $dimensioncss: map.deep-merge((utilities: (
   ring-width: (
-    class: ring,
-    value: (
-      0: (
-        box-shadow: "var(--ring-inset) 0 0 0 calc(0px + var(--ring-offset-width)) var(--ring-color)",
-      ),
-      1: (
-        box-shadow: "var(--ring-inset) 0 0 0 calc(1px + var(--ring-offset-width)) var(--ring-color)",
-      ),
-      2: (
-        box-shadow: "var(--ring-inset) 0 0 0 calc(2px + var(--ring-offset-width)) var(--ring-color)",
-      ),
-      4: (
-        box-shadow: "var(--ring-inset) 0 0 0 calc(4px + var(--ring-offset-width)) var(--ring-color)",
-      ),
-      8: (
-        box-shadow: "var(--ring-inset) 0 0 0 calc(8px + var(--ring-offset-width)) var(--ring-color)",
-      ),
-      "": (
-        box-shadow: "var(--ring-inset) 0 0 0 calc(3px + var(--ring-offset-width)) var(--ring-color)",
-      ),
-      inset: (
-        --ring-inset: inset,
+    class: (
+      ring: (
+        box-shadow: "var(--ring-inset) 0 0 0 calc(VALUE + var(--ring-offset-width)) var(--ring-color)"
       ),
     ),
-    variant: responsive,
+    value: (
+      "": 3px,
+      0: 0,
+      1: 1px,
+      2: 2px,
+      4: 4px,
+      8: 8px,
+    ),
+    variant: focus-within focus,
   ),
 )), $dimensioncss);
+
+.ring-inset {
+  --ring-inset: inset
+}

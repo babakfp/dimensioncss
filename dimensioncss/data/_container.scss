@@ -1,0 +1,27 @@
+@use "sass:map";
+
+
+// $dimensioncss: map.deep-merge((utilities: (
+//   container: (
+//     class: (
+//       container: max-width
+//     ),
+//     value: map.get($dimensioncss, theme, screens),
+//     variant: responsive,
+//   ),
+// )), $dimensioncss);
+
+.container {
+  width: 100%;
+}
+
+@each $key, $value in map.get($dimensioncss, theme, screens) {
+  @media (min-width: $value) {
+    .container {
+      max-width: $value;
+    }
+    .#{$key}\:container {
+      max-width: $value;
+    }
+  }
+}
