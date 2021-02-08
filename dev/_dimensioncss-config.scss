@@ -1,0 +1,14 @@
+@use "sass:map";
+
+// $dimensioncss: map.deep-merge($dimensioncss, (utilities: (
+//   display: (
+//     class: "d",
+//     value: block inline,
+//     variant: null,
+//   ),
+// )));
+
+$dimensioncss: map.deep-merge($dimensioncss, (settings: (
+  class-prefix: di,
+)));
+
