@@ -12,6 +12,5 @@ $dimensioncss: map.deep-merge((utilities: (
       py: padding-top padding-bottom,
     ),
     value: map.get($dimensioncss, theme, spacing),
-    variant: responsive,
   ),
 )), $dimensioncss);

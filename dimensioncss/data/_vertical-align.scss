@@ -4,6 +4,5 @@ $dimensioncss: map.deep-merge((utilities: (
   vertical-align: (
     class: align,
     value: baseline top middle bottom text-top text-bottom,
-    variant: responsive,
   ),
 )), $dimensioncss);

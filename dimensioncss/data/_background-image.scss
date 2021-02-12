@@ -14,6 +14,5 @@ $dimensioncss: map.deep-merge((utilities: (
       gradient-to-l:  linear-gradient(to left, var(--gradient-stops)),
       gradient-to-tl: linear-gradient(to top left, var(--gradient-stops)),
     ),
-    variant: responsive,
   ),
 )), $dimensioncss);

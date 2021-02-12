@@ -11,6 +11,5 @@ $dimensioncss: map.deep-merge((utilities: (
       5: repeat(5, minmax(0, 1fr)),
       6: repeat(6, minmax(0, 1fr)),
     ) none,
-    variant: responsive,
   ),
 )), $dimensioncss);

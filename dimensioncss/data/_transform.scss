@@ -1,7 +1,7 @@
 @use "sass:map";
 
 $dimensioncss: map.deep-merge((utilities: (
-  display: (
+  transform: (
     class: (
       transform: (
         --translate-x: 0,

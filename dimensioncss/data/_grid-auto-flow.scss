@@ -8,6 +8,5 @@ $dimensioncss: map.deep-merge((utilities: (
       row-dense: "row dense",
       col-dense: "column dense",
     ),
-    variant: responsive,
   ),
 )), $dimensioncss);

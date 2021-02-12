@@ -18,6 +18,5 @@ $dimensioncss: map.deep-merge((utilities: (
       span-12: "span 12 / span 12",
       span-full: "1 / -1",
     ),
-    variant: responsive,
   ),
 )), $dimensioncss);

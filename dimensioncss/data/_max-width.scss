@@ -25,6 +25,5 @@ $dimensioncss: map.deep-merge((utilities: (
       ),
       map.get($dimensioncss, theme, spacing),
     ),
-    variant: responsive,
   ),
 )), $dimensioncss);

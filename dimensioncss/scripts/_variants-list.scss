@@ -1,0 +1,70 @@
+@use "sass:map";
+
+// $_variants: map.get($dimensioncss, variants);
+$_variant-suffix: map.get($dimensioncss, settings, variant-suffix);
+
+
+@function get-variant-before-and-after($__variant) {
+  $before: "";
+  $after: "";
+
+//   @debug $__variant;
+
+  @if type-of($__variant) == string {
+    @if
+    (
+      $__variant == first-type or
+      $__variant == last-type or
+      $__variant == odd or
+      $__variant == even or
+      $__variant == visited or
+      $__variant == checked or
+      $__variant == focus-within or
+      $__variant == hover or
+      $__variant == focus or
+      $__variant == focus-visible or
+      $__variant == active or
+      $__variant == disabled
+    ) {
+      $before: $__variant + $_variant-suffix;
+      $after: ":#{$__variant}";
+    }
+    @else if
+    (
+      $__variant == first or
+      $__variant == last
+    ) {
+      $before: #{$__variant} + $_variant-suffix;
+      $after: ":#{$__variant}-child";
+    }
+    @else if
+    (
+      $__variant == group-hover
+    ) {
+      $before: "group:hover .#{$__variant}";
+    }
+    @else if
+    (
+      $__variant == group-focus
+    ) {
+      $before: "group:focus .#{$__variant}";
+    }
+    @else {
+      // @error "unexpected variant name";
+    }
+  }
+  @else if type-of($__variant) == map {
+    $before: map.get($__variant, before);
+    @if map.get($__variant, suffix) == true
+      {
+        $before: $before + $_variant-suffix;
+      }
+    $after: map.get($__variant, after);
+  }
+  @else {
+    @error "unexpected type";
+  }
+
+  @return ($before: $after)
+  
+}

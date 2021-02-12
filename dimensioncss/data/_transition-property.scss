@@ -37,6 +37,5 @@ $dimensioncss: map.deep-merge((utilities: (
         transition-duration: 150ms
       )
     ),
-    variant: responsive,
   ),
 )), $dimensioncss);

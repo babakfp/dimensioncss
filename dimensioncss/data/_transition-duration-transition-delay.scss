@@ -1,7 +1,7 @@
 @use "sass:map";
 
 $dimensioncss: map.deep-merge((utilities: (
-  animation: (
+  transition-duration-transition-delay: (
     class: (
       duration: transition-duration,
       delay: transition-delay,
@@ -16,6 +16,5 @@ $dimensioncss: map.deep-merge((utilities: (
       700: 700ms,
       1000: 1000ms,
     ),
-    variant: responsive,
   ),
 )), $dimensioncss);

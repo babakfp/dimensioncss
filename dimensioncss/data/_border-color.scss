@@ -11,6 +11,5 @@ $dimensioncss: map.deep-merge((utilities: (
       border-l: border-left-color,
     ),
     value: to-rgba(map.get($dimensioncss, theme, colors), var(--border-opacity)),
-    variant: group-hover focus-within hover focus dark,
   ),
 )), $dimensioncss);

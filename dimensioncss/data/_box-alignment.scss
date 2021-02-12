@@ -9,7 +9,6 @@ $dimensioncss: map.deep-merge((utilities: (
       start: flex-start,
       end: flex-end
     ) center baseline stretch,
-    variant: responsive,
   ),
 
   // Justify Content and Align Content
@@ -26,7 +25,6 @@ $dimensioncss: map.deep-merge((utilities: (
       around: space-around,
       evenly: space-evenly,
     ),
-    variant: responsive,
   ),
 
   // Align Self
@@ -36,7 +34,6 @@ $dimensioncss: map.deep-merge((utilities: (
       start: flex-start,
       end: flex-end
     ) center stretch,
-    variant: responsive,
   ),
 
   // Justify Items and Justify Self
@@ -46,7 +43,6 @@ $dimensioncss: map.deep-merge((utilities: (
       js: justify-self
     ),
     value: auto start end center stretch,
-    variant: responsive,
   ),
 
   // Place Content
@@ -57,7 +53,6 @@ $dimensioncss: map.deep-merge((utilities: (
       around: space-around,
       evenly: space-evenly,
     ) stretch,
-    variant: responsive,
   ),
 
   // Place Items and Place Self
@@ -67,7 +62,6 @@ $dimensioncss: map.deep-merge((utilities: (
       ps: place-self,
     ),
     value: auto start end center stretch,
-    variant: responsive,
   ),
 
 )), $dimensioncss);

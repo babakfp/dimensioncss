@@ -2,43 +2,47 @@
 @use "./option-validation" as *
 @import "./print-two"
 @import "../modules/type-validation"
+@import "../modules/str-contain"
 
 
-@mixin dimensioncss-print-styles
+// utility classes
+@mixin dimensioncss-print-utilities
+  // utilities map. get keys and values
+  @each $util-name, $util-options in map.get($dimensioncss, utilities)
+    // simple utility classes
+    @include take-utility-options($util-name, $util-options, "")
 
-  // Looping the utility map.
-  @each $utility-name, $utility-options in map.get($dimensioncss, utilities)
-
-    // $free-css: validate($utility-name, map.get($utility-options, free-css), free-css, map null)
-    // @include free-css-option($free-css)
-    
-    // Remove free-css option because it's don't needed anymore.
-    // Don't remove it for now, because need it in the below mixin.
-    // $utility-options: map.deep-remove($utility-options, free-css)
-
-    @include take-utility-options($utility-name, $utility-options, "")
+    // utility variant classes
+    // variants map. get keys and values
+    @each $variants__util-name, $util-variants in map.get($dimensioncss, variants)
+      // if utility key and variant key was the same
+      @if $variants__util-name == $util-name
+        @include take-utility-options-2($util-name, $util-options, "", $util-variants)
 
 
 
-@mixin dimensioncss-print-responsive-styles
 
-  // Looping the screens map.
+// utility responsive classes and responsive variant classes
+@mixin dimensioncss-print-responsive-utilities
+  // screens map. get keys and values
   @each $breakpoint-className, $breakpoint-value in map.get($dimensioncss, theme, screens)
-
     // CSS media query
     @media (min-width: #{$breakpoint-value})
+      // utilities map. get keys and values
+      @each $util-name, $util-options in map.get($dimensioncss, utilities)
+        // variants map. get keys and values
+        @each $variants__util-name, $util-variants in map.get($dimensioncss, variants)
+          // if utility key and variant key was the same
+          @if $variants__util-name == $util-name
+            // if variants value as utility variants, contains "responsive" variant
+            @if index($util-variants, responsive)
+              @include take-utility-options($util-name, $util-options, $breakpoint-className)
+            // @else
+            //   @each $variant in $util-variants
+            //     @if str-contain($variant, responsive)
+            //       @include take-utility-options-2($util-name, $util-options, $breakpoint-className, $util-variants)
 
-      // Looping the utility map.
-      @each $utility-name, $utility-options in map.get($dimensioncss, utilities)
 
-        $variant: option-validation($utility-name, map.get($utility-options, variant), variant)
-
-        @if index($variant, responsive)
-          @include take-utility-options($utility-name, $utility-options, $breakpoint-className)
-
-
-
-@import "./root-styles"
-
-@include dimensioncss-print-styles
-@include dimensioncss-print-responsive-styles
+@import root-styles
+@include dimensioncss-print-utilities
+@include dimensioncss-print-responsive-utilities

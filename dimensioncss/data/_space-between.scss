@@ -9,6 +9,5 @@ $dimensioncss: map.deep-merge((utilities: (
       -space-y: (margin-top: -VALUE, margin-bottom: -VALUE),
     ),
     value: map.get($dimensioncss, theme, spacing),
-    variant: responsive,
   ),
 )), $dimensioncss);

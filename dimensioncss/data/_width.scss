@@ -55,6 +55,5 @@ $dimensioncss: map.deep-merge((utilities: (
       min: min-content,
       max: max-content,
     ),
-    variant: responsive,
   ),
 )), $dimensioncss);

@@ -7,6 +7,5 @@ $dimensioncss: map.deep-merge((utilities: (
       placeholder: color,
     ),
     value: to-rgba(map.get($dimensioncss, theme, colors), var(--placeholder-opacity)),
-    // variant: placeholder,
   ),
 )), $dimensioncss);

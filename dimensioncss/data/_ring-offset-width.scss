@@ -14,6 +14,5 @@ $dimensioncss: map.deep-merge((utilities: (
       1: 1px,
       3: 3px,
     ),
-    variant: focus-within focus,
   ),
 )), $dimensioncss);

@@ -17,7 +17,6 @@ $_variant-suffix: map.get($dimensioncss, settings, variant-suffix)
   // If any of the options weren't passed, then the values going to be Null by default.
   $class: option-validation($utility-name, map.get($utility-options, class), class)
   $value: option-validation($utility-name, map.get($utility-options, value), value)
-  $variant: option-validation($utility-name, map.get($utility-options, variant), variant)
 
   // $free-css: validate($utility-name, map.get($utility-options, free-css), free-css, map null)
   // $class: option-class-check-and-change($utility-name, $class, $free-css)
@@ -51,7 +50,56 @@ $_variant-suffix: map.get($dimensioncss, settings, variant-suffix)
         @each $key, $value in $nth-2
           $class-value: map.deep-merge(($key: $value), $class-value)
 
-        @include take-class-and-values($utility-name, $class-key +$seperator+ $value-key, $nth-1, $class-value, $variant, $breakpoint-className)
+        @include take-class-and-values($utility-name, $class-key +$seperator+ $value-key, $nth-1, $class-value, $breakpoint-className)
            
       @else
-        @include take-class-and-values($utility-name, $class-key +$seperator+ $value-key, $value-value, $class-value, $variant, $breakpoint-className)
+        @include take-class-and-values($utility-name, $class-key +$seperator+ $value-key, $value-value, $class-value, $breakpoint-className)
+
+
+
+
+
+@mixin take-utility-options-2($utility-name, $utility-options, $breakpoint-className: "", $util-variants)
+
+
+  // Get option's.
+  // If any of the options weren't passed, then the values going to be Null by default.
+  $class: option-validation($utility-name, map.get($utility-options, class), class)
+  $value: option-validation($utility-name, map.get($utility-options, value), value)
+
+  // $free-css: validate($utility-name, map.get($utility-options, free-css), free-css, map null)
+  // $class: option-class-check-and-change($utility-name, $class, $free-css)
+
+  $class: class-option($class, $utility-name)
+  $value: value-option($value)
+
+  // because the structure of the responsive print is different(we are using 2 mixins, one for normal styles and one for responsive), we needed to define it hire rather than with the other variants.
+  @if $breakpoint-className != ""
+    $breakpoint-className: #{$breakpoint-className} + $_variant-suffix
+
+
+  @each $class-key, $class-value in $class
+
+    // TODO [639509] = Used to prevent this from happening: .shadow-sm { ... } | .shadow--md { ... } | .shadow---lg { ... }
+    $class-key__clone: $class-key
+
+    @each $value-key, $value-value in $value
+
+      $seperator: ""
+      @if not is-null($class-key) and not is-null($value-key) and not is-empty-str($class-key) and not is-empty-str($value-key)
+        $seperator: "-"
+
+      @if is-list($value-value)
+
+        // The single value
+        $nth-1: list.nth($value-value, 1)
+        // The Map
+        $nth-2: list.nth($value-value, 2)
+
+        @each $key, $value in $nth-2
+          $class-value: map.deep-merge(($key: $value), $class-value)
+
+        @include take-class-and-values-2($utility-name, $class-key +$seperator+ $value-key, $nth-1, $class-value, $breakpoint-className, $util-variants)
+           
+      @else
+        @include take-class-and-values-2($utility-name, $class-key +$seperator+ $value-key, $value-value, $class-value, $breakpoint-className, $util-variants)
