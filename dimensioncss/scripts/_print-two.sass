@@ -1,17 +1,23 @@
 @use "sass:map"
 @use "sass:list"
+@use "../modules/str-contain" as *
 @use "../modules/type-check" as *
+@use "../modules/str-replace" as *
 @use "./option-validation" as *
 @use "./class-option" as *
 @use "./value-option" as *
-@import "./print-three"
+@import "./variants-list"
 
 
+// Global in page
 $_variant-suffix: map.get($dimensioncss, settings, variant-suffix)
+$_important: map.get($dimensioncss, settings, important)
+$_important: if($_important, "!important", "")
+$_class-prefix: map.get($dimensioncss, settings, class-prefix)
+$_class-prefix: if($_class-prefix != "", $_class-prefix + "-", "" )
 
 
-@mixin take-utility-options($utility-name, $utility-options, $breakpoint-className: "")
-
+@mixin take-utility-options($utility-name, $utility-options, $screen-name, $utility-variants)
 
   // Get option's.
   // If any of the options weren't passed, then the values going to be Null by default.
@@ -21,12 +27,14 @@ $_variant-suffix: map.get($dimensioncss, settings, variant-suffix)
   // $free-css: validate($utility-name, map.get($utility-options, free-css), free-css, map null)
   // $class: option-class-check-and-change($utility-name, $class, $free-css)
 
-  $class: class-option($class, $utility-name)
-  $value: value-option($value)
 
   // because the structure of the responsive print is different(we are using 2 mixins, one for normal styles and one for responsive), we needed to define it hire rather than with the other variants.
-  @if $breakpoint-className != ""
-    $breakpoint-className: #{$breakpoint-className} + $_variant-suffix
+  @if $screen-name != ""
+    $screen-name: #{$screen-name} + $_variant-suffix
+
+  
+  $class: class-option($class, $utility-name)
+  $value: value-option($value)
 
 
   @each $class-key, $class-value in $class
@@ -50,56 +58,48 @@ $_variant-suffix: map.get($dimensioncss, settings, variant-suffix)
         @each $key, $value in $nth-2
           $class-value: map.deep-merge(($key: $value), $class-value)
 
-        @include take-class-and-values($utility-name, $class-key +$seperator+ $value-key, $nth-1, $class-value, $breakpoint-className)
+        @include take-class-and-values($utility-name, $class-key +$seperator+ $value-key, $nth-1, $class-value, $screen-name, $utility-variants)
            
       @else
-        @include take-class-and-values($utility-name, $class-key +$seperator+ $value-key, $value-value, $class-value, $breakpoint-className)
+        @include take-class-and-values($utility-name, $class-key +$seperator+ $value-key, $value-value, $class-value, $screen-name, $utility-variants)
 
 
 
 
+@mixin new-class-property-and-value($property-and-value, $value)
+  @each $property-key, $value-value in $property-and-value
 
-@mixin take-utility-options-2($utility-name, $utility-options, $breakpoint-className: "", $util-variants)
+    @if $value-value == VALUE
+      $value-value: $value
+    @else if str-contain($value-value, VALUE)
+      $value-value: str-replace($value-value, VALUE, $value)
 
+    #{$property-key}: #{$value-value} #{$_important}
 
-  // Get option's.
-  // If any of the options weren't passed, then the values going to be Null by default.
-  $class: option-validation($utility-name, map.get($utility-options, class), class)
-  $value: option-validation($utility-name, map.get($utility-options, value), value)
-
-  // $free-css: validate($utility-name, map.get($utility-options, free-css), free-css, map null)
-  // $class: option-class-check-and-change($utility-name, $class, $free-css)
-
-  $class: class-option($class, $utility-name)
-  $value: value-option($value)
-
-  // because the structure of the responsive print is different(we are using 2 mixins, one for normal styles and one for responsive), we needed to define it hire rather than with the other variants.
-  @if $breakpoint-className != ""
-    $breakpoint-className: #{$breakpoint-className} + $_variant-suffix
+  
 
 
-  @each $class-key, $class-value in $class
 
-    // TODO [639509] = Used to prevent this from happening: .shadow-sm { ... } | .shadow--md { ... } | .shadow---lg { ... }
-    $class-key__clone: $class-key
+@function selector-class($utility-name, $screen-name, $class, $class-before: "", $class-after: "")
+  
+  @if $utility-name == space-between or $utility-name == divide-width
+    @return #{$screen-name}#{$_class-prefix}#{$class-before}#{$class}"> * + *"#{$class-after}
+  @else
+    @return #{$screen-name}#{$_class-prefix}#{$class-before}#{$class}#{$class-after}
 
-    @each $value-key, $value-value in $value
+  
 
-      $seperator: ""
-      @if not is-null($class-key) and not is-null($value-key) and not is-empty-str($class-key) and not is-empty-str($value-key)
-        $seperator: "-"
+@mixin take-class-and-values($utility-name, $class, $value, $property-and-value, $screen-name, $utility-variants)
+  
+  @if $utility-variants == ""
 
-      @if is-list($value-value)
+    .#{selector-class($utility-name, $screen-name, $class)}
+        @include new-class-property-and-value($property-and-value, $value)
 
-        // The single value
-        $nth-1: list.nth($value-value, 1)
-        // The Map
-        $nth-2: list.nth($value-value, 2)
+  @else if type-of($utility-variants) == list
+  
+    @each $__variant in $utility-variants
+      @each $__variant-key, $__variant-value in get-variant-before-and-after($__variant)
+        .#{selector-class($utility-name, $screen-name, $class, $__variant-key, $__variant-value)}
+          @include new-class-property-and-value($property-and-value, $value)
 
-        @each $key, $value in $nth-2
-          $class-value: map.deep-merge(($key: $value), $class-value)
-
-        @include take-class-and-values-2($utility-name, $class-key +$seperator+ $value-key, $nth-1, $class-value, $breakpoint-className, $util-variants)
-           
-      @else
-        @include take-class-and-values-2($utility-name, $class-key +$seperator+ $value-key, $value-value, $class-value, $breakpoint-className, $util-variants)
