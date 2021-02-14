@@ -16,14 +16,14 @@
     @else
       @return $option
 
+  @else if $option-name == free-css
+    @if not is-map($option) and not is-null($option)
+      @error $error-message + " | " + $custom-error-message
+    @else
+      @return $option
+
   // @else if $option-name == variant
   //   @if not is-str($option) and not is-list($option) and not is-null($option)
-  //     @error $error-message + " | " + $custom-error-message
-  //   @else
-  //     @return $option
-
-  // @else if $option-name == free-css
-  //   @if not is-map($option) and not is-null($option)
   //     @error $error-message + " | " + $custom-error-message
   //   @else
   //     @return $option
