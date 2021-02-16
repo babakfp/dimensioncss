@@ -2,7 +2,14 @@
 
 $dimensioncss: map.deep-merge((utilities: (
   divide-opacity: (
-    class: (divide-opacity: --divide-opacity),
+    free-css: (
+      ":root": (
+        --divide-opacity: 1,
+      ),
+    ),
+    class: (
+      divide-opacity: --divide-opacity,
+    ),
     value: (
       0: 0,
       5: .05,

@@ -2,6 +2,11 @@
 
 $dimensioncss: map.deep-merge((utilities: (
   ring-offset-width: (
+    free-css: (
+      ":root": (
+        --ring-offset-width: 0,
+      ),
+    ),
     class: (
       ring-offset: (
         --ring-offset-width: VALUE,

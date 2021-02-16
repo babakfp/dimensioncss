@@ -3,6 +3,12 @@
 
 $dimensioncss: map.deep-merge((utilities: (
   ring-offset-color: (
+    free-css: (
+      ":root": (
+        --ring-offset-color: white,
+        --ring-shadow: "0 0 #0000",
+      ),
+    ),
     class: (
       ring-offset: (
         --ring-offset-color: VALUE,

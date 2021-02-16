@@ -3,6 +3,11 @@
 
 $dimensioncss: map.deep-merge((utilities: (
   ring-color: (
+    free-css: (
+      ":root": (
+        --ring-color: transparent,
+      ),
+    ),
     class: (ring: --ring-color),
     value: to-rgba(map.get($dimensioncss, theme, colors), var(--ring-opacity)),
   ),

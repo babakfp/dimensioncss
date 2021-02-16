@@ -2,6 +2,12 @@
 
 $dimensioncss: map.deep-merge((utilities: (
   translate: (
+    free-css: (
+      ":root": (
+        --translate-x: 0,
+        --translate-y: 0,
+      ),
+    ),
     class: (
       translate-x: --translate-x,
       -translate-x: (--translate-x: -VALUE),

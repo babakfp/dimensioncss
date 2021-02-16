@@ -2,6 +2,12 @@
 
 $dimensioncss: map.deep-merge((utilities: (
   divide-width: (
+    free-css: (
+      ":root": (
+        --divide-x-reverse: 0,
+        --divide-y-reverse: 0,
+      ),
+    ),
     class: (
       divide-x: (
         border-right-width: calc(VALUE * var(--divide-x-reverse)),

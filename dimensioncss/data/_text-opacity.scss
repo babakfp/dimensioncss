@@ -4,7 +4,7 @@ $dimensioncss: map.deep-merge((utilities: (
   text-opacity: (
     free-css: (
       ":root": (
-        --text-opacity: 1
+        --text-opacity: 1,
       ),
     ),
     class: (

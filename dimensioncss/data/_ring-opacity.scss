@@ -2,7 +2,14 @@
 
 $dimensioncss: map.deep-merge((utilities: (
   ring-opacity: (
-    class: (ring-opacity: --ring-opacity),
+    free-css: (
+      ":root": (
+        --ring-opacity: 1,
+      ),
+    ),
+    class: (
+      ring-opacity: --ring-opacity,
+    ),
     value: (
       0: 0,
       5: .05,

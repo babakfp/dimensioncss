@@ -2,6 +2,11 @@
 
 $dimensioncss: map.deep-merge((utilities: (
   placeholder-opacity: (
+    free-css: (
+      ":root": (
+        --placeholder-opacity: 1,
+      ),
+    ),
     class: (
       placeholder-opacity: (
         --placeholder-opacity: VALUE,

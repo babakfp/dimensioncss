@@ -2,6 +2,12 @@
 
 $dimensioncss: map.deep-merge((utilities: (
   skew: (
+    free-css: (
+      ":root": (
+        --skew-x: 0,
+        --skew-y: 0,
+      ),
+    ),
     class: (
       skew-x: --skew-x,
       -skew-x: (--skew-x: -VALUE),

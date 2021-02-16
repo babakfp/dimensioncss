@@ -2,6 +2,11 @@
 
 $dimensioncss: map.deep-merge((utilities: (
   rotate: (
+    free-css: (
+      ":root": (
+        --rotate: 0,
+      ),
+    ),
     class: (
       rotate: --rotate,
       -rotate: (--rotate: -VALUE)
