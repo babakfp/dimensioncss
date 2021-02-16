@@ -8,7 +8,7 @@
 
   // If has value, print the styles.
   @if not is-null($free-css)
-    @each $class, $property-and-valus in $free-css
-      @each $property, $valus in $property-and-valus
+    @each $class, $property-and-values in $free-css
+      @each $property, $value in $property-and-values
         #{$class-prefix}#{$class}
-          #{$property}: #{$valus}
+          #{$property}: #{$value}
