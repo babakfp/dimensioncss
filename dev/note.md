@@ -1,4 +1,0 @@
-TODO: a first last child/type class. be able to determinate by the parrent.
-TODO: User be able to create custom variants. so we dont create it manuily and check if it is used ...
-ability to add custom variants added
-TODO: responsive variants
