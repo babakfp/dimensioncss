@@ -2,6 +2,11 @@
 
 $dimensioncss: map.deep-merge((utilities: (
   text-opacity: (
+    free-css: (
+      ":root": (
+        --text-opacity: 1
+      ),
+    ),
     class: (
       text-opacity: --text-opacity,
     ),
