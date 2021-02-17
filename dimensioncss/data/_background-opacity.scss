@@ -8,9 +8,7 @@ $dimensioncss: map.deep-merge((utilities: (
       ),
     ),
     class: (
-      bg-opacity: (
-        --bg-opacity: VALUE,
-      ),
+      bg-opacity: --bg-opacity,
     ),
     value: (
       0: 0,
@@ -35,5 +33,5 @@ $dimensioncss: map.deep-merge((utilities: (
       95: .95,
       100: 1,
     ),
-    ),
+  ),
 )), $dimensioncss);

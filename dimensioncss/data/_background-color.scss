@@ -3,7 +3,11 @@
 
 $dimensioncss: map.deep-merge((utilities: (
   background-color: (
-    class: (bg: background-color),
+    class: (
+      bg: (
+        --bg-opacity: 1,
+      ) background-color,
+    ),
     value: to-rgba(map.get($dimensioncss, theme, colors), var(--bg-opacity)),
   ),
 )), $dimensioncss);

@@ -8,7 +8,11 @@ $dimensioncss: map.deep-merge((utilities: (
         --ring-color: transparent,
       ),
     ),
-    class: (ring: --ring-color),
+    class: (
+      ring: (
+        --ring-opacity: 1,
+      ) --ring-color,
+    ),
     value: to-rgba(map.get($dimensioncss, theme, colors), var(--ring-opacity)),
   ),
 )), $dimensioncss);

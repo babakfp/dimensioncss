@@ -3,7 +3,11 @@
 
 $dimensioncss: map.deep-merge((utilities: (
   divide-color: (
-    class: (divide: border-color),
+    class: (
+      divide: (
+        --divide-opacity: 1,
+      ) border-color,
+    ),
     value: to-rgba(map.get($dimensioncss, theme, colors), var(--divide-opacity)),
   ),
 )), $dimensioncss);
