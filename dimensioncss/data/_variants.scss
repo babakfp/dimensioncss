@@ -77,6 +77,7 @@ $dimensioncss: map.deep-merge((variants: (
   translate: [responsive hover focus],
   vertical-align: [responsive],
   width: [responsive],
+  all: [responsive],
 )), $dimensioncss);
 
 
