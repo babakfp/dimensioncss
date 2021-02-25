@@ -2,7 +2,7 @@
 
 $dimensioncss: map.deep-merge((utilities: (
   divide-style: (
-    class: divide,
+    class: (divide: border-style),
     value: solid dashed dotted double (style: none),
   ),
 )), $dimensioncss);
