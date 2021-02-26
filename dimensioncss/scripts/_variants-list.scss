@@ -13,7 +13,9 @@ $_variant-suffix: map.get($dimensioncss, settings, variant-suffix);
   @if type-of($__variant) == string {
     @if
     (
-      $__variant == first-type or
+      $__variant == first-child or
+      $__variant == last-child or
+			$__variant == first-type or
       $__variant == last-type or
       $__variant == odd or
       $__variant == even or
@@ -28,14 +30,6 @@ $_variant-suffix: map.get($dimensioncss, settings, variant-suffix);
     ) {
       $before: $__variant + $_variant-suffix;
       $after: ":#{$__variant}";
-    }
-    @else if
-    (
-      $__variant == first or
-      $__variant == last
-    ) {
-      $before: #{$__variant} + $_variant-suffix;
-      $after: ":#{$__variant}-child";
     }
     @else if
     (
