@@ -35,13 +35,20 @@ $_variant-suffix: map.get($dimensioncss, settings, variant-suffix);
     (
       $__variant == group-hover
     ) {
-      $before: "group:hover .#{$__variant}";
+      $before: "group\\::hover .#{$__variant}\\:";
     }
     @else if
     (
       $__variant == group-focus
     ) {
-      $before: "group:focus .#{$__variant}";
+      $before: "group\\::focus .#{$__variant}\\:";
+    }
+		@else if
+    (
+      $__variant == child
+    ) {
+      $before: $__variant + $_variant-suffix;
+      $after: " > * ";
     }
     @else {
       // @error "unexpected variant name";
