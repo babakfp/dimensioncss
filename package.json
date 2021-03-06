@@ -7,6 +7,8 @@
   "repository": "https://github.com/babakfp/dimensioncss",
   "author": "babakfp",
   "scripts": {
-    "dev": "sass --no-source-map dev/index.sass:dev/index.css"
+    "dev": "sass --no-source-map dev/index.sass:dev/index.css",
+    "test-scss": "sass --no-source-map dev/test.scss:dev/test-scss.css",
+    "test-sass": "sass --no-source-map dev/test.sass:dev/test-sass.css"
   }
 }

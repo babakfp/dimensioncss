@@ -82,10 +82,10 @@ $dimensioncss: map.deep-merge((theme: (
     64:     16rem,      // 256px
   ),
   colors: (
-    "white": #fff,
-    "transparent": transparent,
+    white: #fff,
+    transparent: transparent,
     current: currentColor,
-    "gray": (
+    gray: (
       50:  #FAFAFA,
       100: #F4F4F5,
       200: #E4E4E7,
@@ -97,7 +97,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #27272A,
       900: #18181B,
     ),
-    "blue-gray": (
+    blue-gray: (
       50:  #F8FAFC,
       100: #F1F5F9,
       200: #E2E8F0,
@@ -109,7 +109,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #1E293B,
       900: #0F172A,
     ),
-    "cool-gray": (
+    cool-gray: (
       50:  #F9FAFB,
       100: #F3F4F6,
       200: #E5E7EB,
@@ -121,7 +121,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #1F2937,
       900: #111827,
     ),
-    "true-gray": (
+    true-gray: (
       50:  #FAFAFA,
       100: #F5F5F5,
       200: #E5E5E5,
@@ -133,7 +133,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #262626,
       900: #171717,
     ),
-    "warm-gray": (
+    warm-gray: (
       50:  #FAFAF9,
       100: #F5F5F4,
       200: #E7E5E4,
@@ -145,7 +145,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #292524,
       900: #1C1917,
     ),
-    "red": (
+    red: (
       50:  #FEF2F2,
       100: #FEE2E2,
       200: #FECACA,
@@ -157,7 +157,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #991B1B,
       900: #7F1D1D,
     ),
-    "orange": (
+    orange: (
       50:  #FFF7ED,
       100: #FFEDD5,
       200: #FED7AA,
@@ -169,7 +169,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #9A3412,
       900: #7C2D12,
     ),
-    "amber": (
+    amber: (
       50:  #FFFBEB,
       100: #FEF3C7,
       200: #FDE68A,
@@ -181,7 +181,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #92400E,
       900: #78350F,
     ),
-    "yellow": (
+    yellow: (
       50:  #FEFCE8,
       100: #FEF9C3,
       200: #FEF08A,
@@ -193,7 +193,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #854D0E,
       900: #713F12,
     ),
-    "lime": (
+    lime: (
       50:  #F7FEE7,
       100: #ECFCCB,
       200: #D9F99D,
@@ -205,7 +205,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #3F6212,
       900: #365314,
     ),
-    "green": (
+    green: (
       50:  #F0FDF4,
       100: #DCFCE7,
       200: #BBF7D0,
@@ -217,7 +217,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #166534,
       900: #14532D,
     ),
-    "emerald": (
+    emerald: (
       50:  #ECFDF5,
       100: #D1FAE5,
       200: #A7F3D0,
@@ -229,7 +229,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #065F46,
       900: #064E3B,
     ),
-    "teal": (
+    teal: (
       50:  #F0FDFA,
       100: #CCFBF1,
       200: #99F6E4,
@@ -241,7 +241,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #115E59,
       900: #134E4A,
     ),
-    "cyan": (
+    cyan: (
       50:  #ECFEFF,
       100: #CFFAFE,
       200: #A5F3FC,
@@ -253,7 +253,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #155E75,
       900: #164E63,
     ),
-    "light-blue": (
+    light-blue: (
       50:  #F0F9FF,
       100: #E0F2FE,
       200: #BAE6FD,
@@ -265,7 +265,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #075985,
       900: #0C4A6E,
     ),
-    "blue": (
+    blue: (
       50:  #EFF6FF,
       100: #DBEAFE,
       200: #BFDBFE,
@@ -277,7 +277,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #1E40AF,
       900: #1E3A8A,
     ),
-    "indigo": (
+    indigo: (
       50:  #EEF2FF,
       100: #E0E7FF,
       200: #C7D2FE,
@@ -289,7 +289,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #3730A3,
       900: #312E81,
     ),
-    "violet": (
+    violet: (
       50:  #F5F3FF,
       100: #EDE9FE,
       200: #DDD6FE,
@@ -301,7 +301,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #5B21B6,
       900: #4C1D95,
     ),
-    "purple": (
+    purple: (
       50:  #FAF5FF,
       100: #F3E8FF,
       200: #E9D5FF,
@@ -313,7 +313,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #6B21A8,
       900: #581C87,
     ),
-    "fuchsia": (
+    fuchsia: (
       50:  #FDF4FF,
       100: #FAE8FF,
       200: #F5D0FE,
@@ -325,7 +325,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #86198F,
       900: #701A75,
     ),
-    "pink": (
+    pink: (
       50:  #FDF2F8,
       100: #FCE7F3,
       200: #FBCFE8,
@@ -337,7 +337,7 @@ $dimensioncss: map.deep-merge((theme: (
       800: #9D174D,
       900: #831843,
     ),
-    "rose": (
+    rose: (
       50:  #FFF1F2,
       100: #FFE4E6,
       200: #FECDD3,

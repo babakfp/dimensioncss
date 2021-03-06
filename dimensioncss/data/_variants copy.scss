@@ -1,0 +1,135 @@
+@use "sass:map";
+
+$dimensioncss: map.deep-merge((variants:
+(
+	responsive: [
+		background-position
+		display
+		// BOX ALIGNMENT
+		align-items
+		align-content
+		align-self
+		justify-content
+		justify-items
+		justify-self
+		place-content
+		place-items
+		place-self
+		// FLEXBOX
+		flex-direction
+		flex-wrap
+		flex
+		flex-grow
+		flex-shrink
+		order
+		// GRID
+		grid-column
+		grid-column-end
+		grid-column-start
+		grid-auto-columns
+		grid-template-columns
+		grid-row
+		grid-row-end
+		grid-row-start
+		grid-auto-rows
+		grid-template-rows
+		grid-auto-flow
+		gap
+
+		
+		font-size
+		font-weight
+	
+		float
+		
+		height
+		inset
+		letter-spacing
+		line-height
+		margin
+		max-height
+		max-width
+		min-height
+		min-width
+		object-fit
+		object-position
+	],
+
+	group-hover: [
+		background-color
+		background-opacity
+		border-color
+		border-opacity
+		opacity
+		text-color
+		text-opacity
+	],
+
+	focus-within: [
+		background-color
+		background-opacity
+		border-color
+		border-opacity
+		opacity
+		text-color
+		text-opacity
+	],
+
+	hover: [
+		background-color
+		background-opacity
+		border-color
+		border-opacity
+		opacity
+		text-color
+		text-opacity
+	],
+
+	focus: [
+		background-color
+		background-opacity
+		border-color
+		border-opacity
+		opacity
+		text-color
+		text-opacity
+	],
+
+	dark: [
+		background-color
+		background-opacity
+		border-color
+		border-opacity
+		divide-color
+		divide-opacity
+		opacity
+		text-color
+		text-opacity
+	],
+  
+
+  overflow: responsive,
+  overscroll-behavior: responsive,
+  padding: responsive,
+  placeholder-color: hover focus,
+  placeholder-opacity: responsive,
+  position: responsive,
+  ring-color: focus-within focus dark,
+  ring-offset-color: focus-within focus dark,
+  ring-offset-width: focus-within focus,
+  ring-opacity: focus-within focus dark,
+  ring-width: focus-within focus,
+  rotate: responsive hover focus,
+  scale: responsive hover focus,
+  skew: responsive hover focus,
+  space-between: responsive,
+  text-align: responsive,
+  transform-origin: responsive,
+  transform: responsive,
+  transition-duration-transition-delay: responsive,
+  transition-property: responsive,
+  translate: responsive hover focus,
+  vertical-align: responsive,
+  width: responsive,
+  all: responsive,
+)), $dimensioncss);
