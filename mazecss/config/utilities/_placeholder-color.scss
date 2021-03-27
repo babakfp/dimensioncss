@@ -1,0 +1,14 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+@use "../modules/to-rgba" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  placeholder-color: (
+    class: (
+      placeholder: (
+        --placeholder-opacity: 1,
+      ) color,
+    ),
+    value: to-rgba(map.get($dimensioncss, theme, colors), var(--placeholder-opacity)),
+  ),
+)), $dimensioncss);

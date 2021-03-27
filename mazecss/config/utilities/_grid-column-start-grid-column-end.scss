@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  grid-column-start-grid-column-end: (
+    class: (
+      col-start: grid-column-start,
+      col-end: grid-column-end,
+    ),
+    value: 1 2 3 4 5 6 7 8 9 10 11 12 13 auto,
+  ),
+)), $dimensioncss);

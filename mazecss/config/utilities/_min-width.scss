@@ -1,0 +1,13 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  min-width: (
+    class: min-w,
+    value: (
+      full: 100%,
+      min: min-content,
+      max: max-content,
+    ),
+  ),
+)), $dimensioncss);

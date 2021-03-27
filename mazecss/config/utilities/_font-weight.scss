@@ -1,0 +1,20 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  font-weight: (
+    class: text,
+    value: 100 200 300 400 500 600 700 800 900 950 (
+      thin: 100,
+      extralight: 200,
+      light: 300,
+      normal: 400,
+      medium: 500,
+      semibold: 600,
+      bold: 700,
+      extrabold: 800,
+      black: 900,
+      extrablack: 950
+    ),
+  ),
+)), $dimensioncss);

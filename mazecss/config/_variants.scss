@@ -1,0 +1,101 @@
+@use "sass:map";
+@use "./initial.scss" as *;
+
+$dimensioncss: map.deep-merge((variants:
+(
+  all: responsive,
+
+  width: responsive,
+  min-width: responsive,
+  max-width: responsive,
+  height: responsive,
+  min-height: responsive,
+  max-height: responsive,
+
+  display: responsive,
+
+	align-items: responsive,
+	align-content: responsive,
+	align-self: responsive,
+  justify-content: responsive,
+  justify-items: responsive,
+	justify-self: responsive,
+  place-content: responsive,
+  place-items: responsive,
+	place-self: responsive,
+  vertical-align: responsive,
+
+	flex-direction: responsive,
+  flex-wrap: responsive,
+	flex: responsive,
+  flex-grow: responsive,
+  flex-shrink: responsive,
+  order: responsive,
+
+	grid-column: responsive,
+	grid-column-end: responsive,
+  grid-column-start: responsive,
+  grid-auto-columns: responsive,
+  grid-template-columns: responsive,
+  grid-row: responsive,
+	grid-row-end: responsive,
+  grid-row-start: responsive,
+  grid-auto-rows: responsive,
+  grid-template-rows: responsive,
+	grid-auto-flow: responsive,
+	gap: responsive,
+
+  background-color: group-hover focus-within hover focus dark,
+  background-opacity: group-hover focus-within hover focus dark,
+  background-position: responsive,
+  
+	border-color: group-hover focus-within hover focus dark,
+  border-opacity: group-hover focus-within hover focus dark,
+  
+  divide-color: group-hover dark,
+  divide-opacity: group-hover dark,
+  
+  font-size: responsive,
+  font-weight: responsive,
+	letter-spacing: responsive,
+  line-height: responsive,
+  text-align: responsive,
+  
+  text-color: group-hover focus-within hover focus dark,
+  text-opacity: group-hover focus-within hover focus dark,
+
+  float: responsive,
+  
+  padding: responsive,
+  margin: responsive,
+  space-between: responsive,
+
+	ring-color: focus-within focus dark,
+  ring-offset-color: focus-within focus dark,
+  ring-offset-width: focus-within focus,
+  ring-opacity: focus-within focus dark,
+  ring-width: focus-within focus,
+	
+  inset: responsive,
+  
+	object-fit: responsive,
+  object-position: responsive,
+
+  opacity: group-hover focus-within hover focus dark,
+  overflow: responsive,
+  overscroll-behavior: responsive,
+  placeholder-color: hover focus,
+  placeholder-opacity: responsive,
+  position: responsive,
+
+  rotate: responsive hover focus,
+  scale: responsive hover focus,
+  skew: responsive hover focus,
+
+  transform-origin: responsive,
+  transform: responsive,
+  transition-duration-transition-delay: responsive,
+  transition-property: responsive,
+  translate: responsive hover focus,
+
+)), $dimensioncss);

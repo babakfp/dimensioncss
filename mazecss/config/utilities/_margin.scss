@@ -1,0 +1,24 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  margin: (
+    class: (
+      m:    margin,
+      mt:   margin-top,
+      mr:   margin-right,
+      mb:   margin-bottom,
+      ml:   margin-left,
+      mx:   margin-right margin-left,
+      my:   margin-top margin-bottom,
+      -m:   (margin: -VALUE),
+      -mt:  (margin-top: -VALUE),
+      -mr:  (margin-right: -VALUE),
+      -mb:  (margin-bottom: -VALUE),
+      -ml:  (margin-left: -VALUE),
+      -mx:  (margin-right: -VALUE, margin-left: -VALUE),
+      -my:  (margin-top: -VALUE, margin-bottom: -VALUE),
+    ),
+    value: map.get($dimensioncss, theme, spacing),
+  ),
+)), $dimensioncss);

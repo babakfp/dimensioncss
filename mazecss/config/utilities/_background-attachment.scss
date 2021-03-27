@@ -1,0 +1,9 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  background-attachment: (
+    class: bg,
+    value: fixed local scroll,
+  ),
+)), $dimensioncss);

@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+	align-items: (
+    class: ai,
+    value: (
+      start: flex-start,
+      end: flex-end
+    ) center baseline stretch,
+  ),
+)), $dimensioncss);

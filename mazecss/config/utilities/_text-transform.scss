@@ -1,0 +1,9 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  text-transform: (
+    class: text,
+    value: uppercase lowercase capitalize (normalcase: none),
+  ),
+)), $dimensioncss);

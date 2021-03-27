@@ -1,0 +1,9 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  list-style-type: (
+    class: list,
+    value: none disc decimal,
+  ),
+)), $dimensioncss);

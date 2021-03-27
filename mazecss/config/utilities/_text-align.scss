@@ -1,0 +1,9 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  text-align: (
+    class: text,
+    value: left center right justify,
+  ),
+)), $dimensioncss);

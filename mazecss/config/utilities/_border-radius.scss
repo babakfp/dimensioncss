@@ -1,0 +1,25 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  border-radius: (
+    class: (
+      rounded: border-radius,
+      rounded-t: border-top-left-radius border-top-right-radius,
+      rounded-r: border-top-right-radius border-bottom-right-radius,
+      rounded-b: border-bottom-left-radius border-bottom-right-radius,
+      rounded-l: border-top-left-radius border-bottom-left-radius,
+    ),
+    value: (
+      none: 0,
+      sm: .125rem,
+      "": .25rem,
+      md: .375rem,
+      lg: .5rem,
+      xl: .75rem,
+      2xl: 1rem,
+      3xl: 1.5rem,
+      full: 999px,
+    ),
+  ),
+)), $dimensioncss);

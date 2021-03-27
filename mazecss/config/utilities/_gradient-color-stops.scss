@@ -1,0 +1,26 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  grid-column: (
+    free-css: (
+      ":root": (
+        --gradient-from: transparent,
+        --gradient-to: transparent,
+      ),
+    ),
+    class: (
+      from: (
+        --gradient-from: VALUE,
+        --gradient-stops: "var(--gradient-from), var(--gradient-to, VALUE)",
+      ),
+      via: (
+        --gradient-stops: "var(--gradient-from), VALUE, var(--gradient-to, VALUE)",
+      ),
+      to: (
+        --gradient-to: VALUE,
+      ),
+    ),
+    value: map.get($dimensioncss, theme, colors),
+  ),
+)), $dimensioncss);

@@ -1,0 +1,13 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  background-clip: (
+    class: bg-clip,
+    value: (
+      border: border-box,
+      padding: padding-box,
+      content: content-box,
+    ) text,
+  ),
+)), $dimensioncss);

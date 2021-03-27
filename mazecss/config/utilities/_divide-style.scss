@@ -1,0 +1,9 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  divide-style: (
+    class: (divide: border-style),
+    value: solid dashed dotted double (style: none),
+  ),
+)), $dimensioncss);

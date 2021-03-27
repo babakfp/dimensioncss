@@ -1,0 +1,23 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  font-size: (
+    class: text,
+    value: (
+      xs:   .75rem    (line-height: 1rem),
+      sm:   .875rem   (line-height: 1.25rem),
+      base: 1rem      (line-height: 1.5rem),
+      lg:   1.125rem  (line-height: 1.75rem),
+      xl:   1.25rem   (line-height: 1.75rem),
+      2xl:  1.5rem    (line-height: 2rem),
+      3xl:  1.875rem  (line-height: 2.25rem),
+      4xl:  2.25rem   (line-height: 2.5rem),
+      5xl:  3rem      (line-height: 1),
+      6xl:  3.75rem   (line-height: 1),
+      7xl:  4.5rem    (line-height: 1),
+      8xl:  6rem      (line-height: 1),
+      9xl:  8rem      (line-height: 1),
+    ),
+  ),
+)), $dimensioncss);

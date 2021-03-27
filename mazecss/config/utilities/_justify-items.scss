@@ -1,0 +1,9 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  justify-items: (
+    class: ji,
+    value: auto start end center stretch,
+  ),
+)), $dimensioncss);

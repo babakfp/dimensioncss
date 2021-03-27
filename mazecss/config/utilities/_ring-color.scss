@@ -1,0 +1,19 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+@use "../modules/to-rgba" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  ring-color: (
+    free-css: (
+      ":root": (
+        --ring-color: transparent,
+      ),
+    ),
+    class: (
+      ring: (
+        --ring-opacity: 1,
+      ) --ring-color,
+    ),
+    value: to-rgba(map.get($dimensioncss, theme, colors), var(--ring-opacity)),
+  ),
+)), $dimensioncss);

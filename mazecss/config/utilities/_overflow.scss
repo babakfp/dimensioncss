@@ -1,0 +1,9 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  overflow: (
+    class: overflow overflow-x overflow-y,
+    value: auto hidden visible scroll,
+  ),
+)), $dimensioncss);

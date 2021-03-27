@@ -1,0 +1,8 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  cursor: (
+    value: auto default pointer wait text move not-allowed,
+  ),
+)), $dimensioncss);

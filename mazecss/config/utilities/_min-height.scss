@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  min-height: (
+    class: min-h,
+    value: (
+      full: 100%,
+      screen: 100vh,
+    ),
+  ),
+)), $dimensioncss);

@@ -1,0 +1,20 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  ring-width: (
+    class: (
+      ring: (
+        box-shadow: "0 0 0 calc(VALUE + var(--ring-offset-width)) var(--ring-color)"
+      ),
+    ),
+    value: (
+      "": 3px,
+      0: 0,
+      1: 1px,
+      2: 2px,
+      4: 4px,
+      8: 8px,
+    ),
+  ),
+)), $dimensioncss);

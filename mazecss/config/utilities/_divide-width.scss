@@ -1,0 +1,30 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  divide-width: (
+    free-css: (
+      ":root": (
+        --divide-x-reverse: 0,
+        --divide-y-reverse: 0,
+      ),
+    ),
+    class: (
+      divide-x: (
+        border-right-width: calc(VALUE * var(--divide-x-reverse)),
+        border-left-width: calc(VALUE * calc(1 - var(--divide-x-reverse))),
+      ),
+      divide-y: (
+        border-top-width: calc(VALUE * calc(1 - var(--divide-y-reverse))),
+        border-bottom-width: calc(VALUE * var(--divide-y-reverse)),
+      ),
+    ),
+    value: (
+      "": 1px,
+      0: 0,
+      2: 2px,
+      3: 3px,
+      4: 4px,
+    ),
+  ),
+)), $dimensioncss);

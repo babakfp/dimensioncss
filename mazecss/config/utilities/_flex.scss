@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  flex: (
+    value: (
+      1: "1 1 0%",
+      auto: "1 1 auto",
+      initial: "0 1 auto",
+    ) none,
+  ),
+)), $dimensioncss);

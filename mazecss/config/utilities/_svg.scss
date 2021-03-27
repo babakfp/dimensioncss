@@ -1,0 +1,14 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  fill: (
+    value: (current: currentColor)
+  ),
+  stroke: (
+    value: (current: currentColor)
+  ),
+  stroke-width: (
+    value: 0 1 2
+  ),
+)), $dimensioncss);

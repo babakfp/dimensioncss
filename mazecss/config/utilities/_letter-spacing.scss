@@ -1,0 +1,16 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  letter-spacing: (
+    class: tracking,
+    value: (
+      tighter: -.05em,
+      tight: -.025em,
+      normal: 0,
+      wide: .025em,
+      wider: .05em,
+      widest: .1em
+    ),
+  ),
+)), $dimensioncss);

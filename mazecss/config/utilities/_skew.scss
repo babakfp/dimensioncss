@@ -1,0 +1,27 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  skew: (
+    free-css: (
+      ":root": (
+        --skew-x: 0,
+        --skew-y: 0,
+      ),
+    ),
+    class: (
+      skew-x: --skew-x,
+      -skew-x: (--skew-x: -VALUE),
+      skew-y: --skew-y,
+      -skew-y: (--skew-y: -VALUE)
+    ),
+    value: (
+      0: 0deg,
+      1: 1deg,
+      2: 2deg,
+      3: 3deg,
+      6: 6deg,
+      12: 12deg
+    ),
+  ),
+)), $dimensioncss);

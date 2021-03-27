@@ -1,0 +1,62 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((settings: (
+  container: (
+    status: true,
+    center: true,
+    padding: 1rem,
+    responsive: true,
+    // padding: (
+    //   "": 1rem,
+    //   sm: 2rem,
+    //   lg: 4rem,
+    //   xl: 5rem,
+    //   xxl: 6rem,
+    // ),
+  )
+)), $dimensioncss);
+
+$_container: map.get($dimensioncss, settings, container);
+$_status: map.get($_container, status);
+$_center: map.get($_container, center);
+$_padding: map.get($_container, padding);
+$_screens: map.get($dimensioncss, theme, screens);
+$_responsive: map.get($_container, responsive);
+
+@if $_status != false
+{
+  .container {
+    width: 100%;
+    @if $_center == true {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    @if type-of($_padding) != map {
+      padding-left: $_padding;
+      padding-right: $_padding;
+    } @else {
+      padding-left: map.get($_padding, "");
+      padding-right: map.get($_padding, "");
+    }
+  }
+
+  @if $_responsive == true {
+    @each $screen-name, $screen-unit in $_screens {
+      @media (min-width: $screen-unit) {
+        .container {
+          max-width: $screen-unit;
+          @if type-of($_padding) == map {
+            @each $padding-screen, $padding-value in $_padding {
+              @if $padding-screen == $screen-name {
+                padding-left: $padding-value;
+                padding-right: $padding-value;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

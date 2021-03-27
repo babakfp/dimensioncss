@@ -1,0 +1,21 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  border-width: (
+    class: (
+      border: border-width,
+      border-t: border-top-width,
+      border-r: border-right-width,
+      border-b: border-bottom-width,
+      border-l: border-left-width,
+    ),
+    value: (
+      "": 1px,
+      0: 0,
+      2: 2px,
+      3: 3px,
+      4: 4px,
+    ),
+  ),
+)), $dimensioncss);

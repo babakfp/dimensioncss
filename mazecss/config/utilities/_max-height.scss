@@ -1,0 +1,15 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  max-height: (
+    class: max-h,
+    value: map.deep-merge(
+      map.get($dimensioncss, theme, spacing),
+      (
+        full: 100%,
+        screen: 100vh,
+      )
+    ),
+  ),
+)), $dimensioncss);

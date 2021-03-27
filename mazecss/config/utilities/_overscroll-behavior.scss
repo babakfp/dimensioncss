@@ -1,0 +1,13 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  overscroll-behavior: (
+    class: (
+      overscroll: overscroll-behavior,
+      overscroll-x: overscroll-behavior-x,
+      overscroll-y: overscroll-behavior-y,
+    ),
+    value: auto contain none,
+  ),
+)), $dimensioncss);

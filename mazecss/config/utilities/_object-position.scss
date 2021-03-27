@@ -1,0 +1,19 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  object-position: (
+    class: object,
+    value: (
+      t: top,
+      r: right,
+      b: bottom,
+      l: left,
+      c: center,
+      lb: "left bottom",
+      lt: "left top",
+      rb: "right bottom",
+      rt: "right top",
+    ),
+  ),
+)), $dimensioncss);

@@ -1,0 +1,26 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+@use "../modules/to-rgba" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  border-color: (
+    class: (
+      border: (
+        --border-opacity: 1,
+      ) border-color,
+      border-t: (
+        --border-opacity: 1,
+      ) border-top-color,
+      border-r: (
+        --border-opacity: 1,
+      ) border-right-color,
+      border-b: (
+        --border-opacity: 1,
+      ) border-bottom-color,
+      border-l: (
+        --border-opacity: 1,
+      ) border-left-color,
+    ),
+    value: to-rgba(map.get($dimensioncss, theme, colors), var(--border-opacity)),
+  ),
+)), $dimensioncss);

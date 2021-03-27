@@ -1,0 +1,9 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  white-space: (
+    class: whitespace,
+    value: normal nowrap pre pre-line pre-wrap
+  ),
+)), $dimensioncss);

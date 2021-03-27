@@ -1,0 +1,9 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  background-size: (
+    class: bg,
+    value: auto cover contain,
+  ),
+)), $dimensioncss);

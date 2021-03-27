@@ -1,0 +1,8 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+// TODO
+$dimensioncss: map.deep-merge((utilities: (
+  box-shadow: (
+  ),
+)), $dimensioncss);

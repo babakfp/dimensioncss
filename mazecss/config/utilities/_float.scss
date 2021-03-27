@@ -1,0 +1,8 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  float: (
+    value: right left none,
+  ),
+)), $dimensioncss);

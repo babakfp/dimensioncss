@@ -1,0 +1,17 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  word-break: (
+    class: break,
+    value: (
+      normal: normal (
+        overflow-wrap: normal,
+      ),
+      words: null (
+        overflow-wrap: break-word,
+      ),
+      all: break-all,
+    ),
+  ),
+)), $dimensioncss);

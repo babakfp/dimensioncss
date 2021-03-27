@@ -1,0 +1,9 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  flex-grow-flex-shrink: (
+    class: flex-grow flex-shrink,
+    value: 0 ("": 1),
+  ),
+)), $dimensioncss);

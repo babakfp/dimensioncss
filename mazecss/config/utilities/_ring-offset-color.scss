@@ -1,0 +1,20 @@
+@use "sass:map";
+@use "../initial.scss" as *;
+@use "../modules/to-rgba" as *;
+
+$dimensioncss: map.deep-merge((utilities: (
+  ring-offset-color: (
+    free-css: (
+      ":root": (
+        --ring-offset-color: white,
+        --ring-shadow: "0 0 #0000",
+      ),
+    ),
+    class: (
+      ring-offset: --ring-offset-color (
+        --ring-opacity: 1,
+        box-shadow: "0 0 0 var(--ring-offset-width) var(--ring-offset-color), var(--ring-shadow)",
+      )),
+    value: to-rgba(map.get($dimensioncss, theme, colors), var(--ring-opacity)),
+  ),
+)), $dimensioncss);
