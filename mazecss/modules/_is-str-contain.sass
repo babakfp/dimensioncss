@@ -7,8 +7,10 @@
   @if not is-str($str) or not is-str($substr) or not is-num($str) or not is-num($substr)
     @return "expected string"
 
-  @if is-num($str) or is-num($substr)
+  @if is-num($str)
     $str: "#{$str}"
+
+  @if is-num($substr)
     $substr: "#{$substr}"
 
   @if is-num(string.index($str, $substr))
