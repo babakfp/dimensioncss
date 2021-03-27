@@ -8,9 +8,13 @@
   @if not is-str($str) or not is-str($substr) or not is-str($replace) or not is-num($str) or not is-num($substr) or not is-num($replace)
     @return $str
 
-  @if is-num($str) or is-num($substr) or is-num($replace)
+  @if is-num($str)
     $str: "#{$str}"
+  
+  @if is-num($substr)
     $substr: "#{$substr}"
+  
+  @if is-num($replace)
     $replace: "#{$replace}"
 
   $index: str-index($str, $substr)
