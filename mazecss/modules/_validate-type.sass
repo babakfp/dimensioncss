@@ -1,0 +1,17 @@
+@use "sass:list"
+
+// type safing.
+// $data - type: any - the variable or data that you want to assign the types.
+// $types - type: str list - explanation the types that you want to assign to the $data.
+// returning null because we don't need the return value.
+// example
+  // $my-name: "babak"
+  // $validate-type: validate-type($my-name, string)
+
+@function validate-type($data, $types...)
+
+  @each $type in $types
+    @if type-of($data) != $type
+      @error "expected #{$types}. received #{type-of($data)}"
+
+  @return null

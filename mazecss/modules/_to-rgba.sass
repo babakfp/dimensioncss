@@ -1,0 +1,49 @@
+@use "sass:map"
+@use "type-check" as *
+
+
+@function to-rgba($color, $opacity)
+
+  // prevent from converting to rgba
+  @if $color == transparent or $color == currentColor or $color == inherit
+    @return $color
+
+  @else if type-of($color) == color
+    //^ for example: gray or #FFF
+    @return rgba($color, $opacity)
+
+  @else if type-of($color) == map
+    //^ for example: (white: #FFF) or (white: (000: #FFF))
+
+    $return: ()
+    
+    @each $k, $v in $color
+
+      @if is-map($v)
+        //^ for example: (gray: (100: #fcfcfc))
+
+        @each $vk, $vv in $v
+
+          // This is for the default value. example: (gray: ("": #fff, 100: #fcfcfc)). gray=white - gray-100=#fcfcfc
+          $seperator: if($vk != "", "-", "")
+
+          @if $v == transparent or $v == currentColor
+            $return: map.deep-merge((#{$k}#{$seperator}#{$vk}: $vv), $return)
+          @else
+            $return: map.deep-merge((#{$k}#{$seperator}#{$vk}: rgba($vv, $opacity)), $return)
+
+      @else if is-list($v) or is-bool($v)
+        @error "unexpected type"
+
+      @else
+        //^ for example: (white: #FFF)
+
+        @if $v == transparent or $v == currentColor
+          $return: map.deep-merge(($k: $v), $return)
+        @else
+          $return: map.deep-merge(($k: rgba($v, $opacity)), $return)
+
+    @return $return
+
+  @else 
+    @error "unexpected type"

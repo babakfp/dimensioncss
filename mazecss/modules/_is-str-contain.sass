@@ -1,0 +1,13 @@
+@use "sass:string"
+@use "type-check" as *
+
+
+@function is-str-contain($str, $substr)
+
+  @if not is-str($str) or not is-str($substr)
+    @return "expected string"
+
+  @if is-num(string.index($str, $substr))
+    @return true
+
+  @return false

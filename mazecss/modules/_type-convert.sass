@@ -1,0 +1,25 @@
+@use "sass:map"
+@use "type-check" as *
+
+
+@function to-map($value)
+
+  @if is-map($value) or is-bool($value) or is-null($value)
+    @return $value
+
+  @else if is-str($value) or is-num($value) or is-color($value)
+    @return ($value: $value)
+
+  @else if is-list($value)
+    $map: ()
+    @each $item in $value
+      @if is-map($item)
+        @each $item-key, $item-value in $item
+          $map: map.deep-merge(($item-key: $item-value), $map)
+      @else
+        $map: map.deep-merge(($item: $item), $map)
+    @return $map
+
+
+@function to-str($value)
+  @return inspect($value)
