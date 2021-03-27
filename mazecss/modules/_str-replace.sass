@@ -3,6 +3,10 @@
 
 @function str-replace($str, $substr, $replace: "")
 
+  $str: "#{$str}"
+  $substr: "#{$substr}"
+  $replace: "#{$replace}"
+
   $index: str-index($str, $substr)
 
   @if $index
