@@ -1,6 +1,6 @@
 @use "sass:map";
 @use "../initial.scss" as *;
-@use "../modules/to-rgba" as *;
+@use "../../modules/to-rgba" as *;;
 
 $dimensioncss: map.deep-merge((utilities: (
   background-color: (
