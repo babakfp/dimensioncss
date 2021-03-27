@@ -1,11 +1,17 @@
+@use "type-check" as *
+  
 // in $str replace $substr with $replace.
 // author: hugo giraudel
 
 @function str-replace($str, $substr, $replace: "")
 
-  $str: "#{$str}"
-  $substr: "#{$substr}"
-  $replace: "#{$replace}"
+  @if not is-str($str) or not is-str($substr) or not is-str($replace) or not is-num($str) or not is-num($substr) or not is-num($replace)
+    @return $str
+
+  @if is-num($str) or is-num($substr) or is-num($replace)
+    $str: "#{$str}"
+    $substr: "#{$substr}"
+    $replace: "#{$replace}"
 
   $index: str-index($str, $substr)
 
