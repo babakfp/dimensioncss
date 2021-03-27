@@ -45,15 +45,15 @@ $dimensioncss: map.deep-merge((variants:
 	grid-auto-flow: responsive,
 	gap: responsive,
 
-  background-color: group-hover focus-within hover focus dark,
-  background-opacity: group-hover focus-within hover focus dark,
+  background-color: group-hover focus-within hover focus,
+  background-opacity: group-hover focus-within hover focus,
   background-position: responsive,
   
-	border-color: group-hover focus-within hover focus dark,
-  border-opacity: group-hover focus-within hover focus dark,
+	border-color: group-hover focus-within hover focus,
+  border-opacity: group-hover focus-within hover focus,
   
-  divide-color: group-hover dark,
-  divide-opacity: group-hover dark,
+  divide-color: group-hover,
+  divide-opacity: group-hover,
   
   font-size: responsive,
   font-weight: responsive,
@@ -61,8 +61,8 @@ $dimensioncss: map.deep-merge((variants:
   line-height: responsive,
   text-align: responsive,
   
-  text-color: group-hover focus-within hover focus dark,
-  text-opacity: group-hover focus-within hover focus dark,
+  text-color: group-hover focus-within hover focus,
+  text-opacity: group-hover focus-within hover focus,
 
   float: responsive,
   
@@ -70,10 +70,10 @@ $dimensioncss: map.deep-merge((variants:
   margin: responsive,
   space-between: responsive,
 
-	ring-color: focus-within focus dark,
-  ring-offset-color: focus-within focus dark,
+	ring-color: focus-within focus,
+  ring-offset-color: focus-within focus,
   ring-offset-width: focus-within focus,
-  ring-opacity: focus-within focus dark,
+  ring-opacity: focus-within focus,
   ring-width: focus-within focus,
 	
   inset: responsive,
@@ -81,7 +81,7 @@ $dimensioncss: map.deep-merge((variants:
 	object-fit: responsive,
   object-position: responsive,
 
-  opacity: group-hover focus-within hover focus dark,
+  opacity: group-hover focus-within hover focus,
   overflow: responsive,
   overscroll-behavior: responsive,
   placeholder-color: hover focus,
