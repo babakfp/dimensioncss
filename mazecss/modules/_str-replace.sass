@@ -1,6 +1,7 @@
 @use "type-check" as *
   
 // in $str replace $substr with $replace.
+// accepting number type values too because string values that contain numbers at the beginning of them are considered as a number type.
 // author: hugo giraudel
 
 @function str-replace($str, $substr, $replace: "")

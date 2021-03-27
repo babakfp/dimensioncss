@@ -1,6 +1,7 @@
 @use "sass:string"
 @use "type-check" as *
 
+// accepting number type values too because string values that contain numbers at the beginning of them are considered as a number type.
 
 @function is-str-contain($str, $substr)
 
