@@ -4,8 +4,12 @@
 
 @function is-str-contain($str, $substr)
 
-  @if not is-str($str) or not is-str($substr)
+  @if not is-str($str) or not is-str($substr) or not is-num($str) or not is-num($substr)
     @return "expected string"
+
+  @if is-num($str) or is-num($substr)
+    $str: "#{$str}"
+    $substr: "#{$substr}"
 
   @if is-num(string.index($str, $substr))
     @return true
