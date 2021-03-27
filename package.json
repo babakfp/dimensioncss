@@ -1,0 +1,12 @@
+{
+  "name": "mazecss",
+  "description": "A utility-first CSS framework.",
+  "author": "BabakFP",
+  "version": "1.0.0",
+  "main": "index.scss",
+  "license": "GPL-3.0",
+  "repository": "https://github.com/babakfp/mazecss",
+  "scripts": {
+    "test": "sass --no-source-map test/index.sass:test/index.css"
+  }
+}
