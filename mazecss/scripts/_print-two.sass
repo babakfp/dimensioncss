@@ -1,0 +1,112 @@
+@use "sass:map"
+@use "sass:list"
+@use "sass:string"
+@use "../config" as *
+@use "../modules/is-str-contain" as *
+@use "../modules/type-check" as *
+@use "../modules/str-replace" as *
+@use "./option-validation" as *
+@use "./class-option" as *
+@use "./value-option" as *
+@use "./get-variant" as *
+
+
+// Global in page
+$_important: map.get($dimensioncss, settings, important)
+$_important: if($_important, "!important", "")
+$_class-prefix: map.get($dimensioncss, settings, class-prefix)
+$_class-prefix: if($_class-prefix != "", $_class-prefix + "-", "" )
+$_variant-suffix: map.get($dimensioncss, settings, variant-suffix)
+
+
+@mixin take-utility-options($utility-name, $utility-options, $screen-name, $utility-variants)
+
+  // Get option's.
+  // If any of the options weren't passed, then the values going to be Null by default.
+  $class: option-validation($utility-name, map.get($utility-options, class), class)
+  $value: option-validation($utility-name, map.get($utility-options, value), value)
+
+  // $free-css: validate($utility-name, map.get($utility-options, free-css), free-css, map null)
+  // $class: option-class-check-and-change($utility-name, $class, $free-css)
+
+  $class: class-option($class, $utility-name)
+  $value: value-option($value)
+
+
+  @each $class-key, $class-value in $class
+
+    // used to prevent this from happening: .shadow-sm { ... } | .shadow--md { ... } | .shadow---lg { ... }
+    $class-key__clone: $class-key
+
+    @each $value-key, $value-value in $value
+
+      $seperator: ""
+      @if not is-null($class-key) and not is-null($value-key) and not is-empty-str($class-key) and not is-empty-str($value-key)
+        $seperator: "-"
+
+      @if is-list($value-value)
+
+        // The single value
+        $nth-1: list.nth($value-value, 1)
+        // The Map
+        $nth-2: list.nth($value-value, 2)
+
+        @each $key, $value in $nth-2
+          $class-value: map.deep-merge(($key: $value), $class-value)
+
+        @include take-class-and-values($utility-name, $class-key +$seperator+ $value-key, $nth-1, $class-value, $screen-name, $utility-variants)
+           
+      @else
+        @include take-class-and-values($utility-name, $class-key +$seperator+ $value-key, $value-value, $class-value, $screen-name, $utility-variants)
+
+
+
+
+@mixin new-class-property-and-value($property-and-value, $value)
+  @each $property-key, $value-value in $property-and-value
+
+    @if $value-value == VALUE
+      $value-value: $value
+    @else if str-contain($value-value, VALUE)
+      $value-value: str-replace($value-value, VALUE, $value)
+
+    #{$property-key}: #{$value-value} #{$_important}
+
+  
+
+
+
+@function selector-class($utility-name, $screen-name, $class, $variant: null)
+
+  @if $screen-name != ""
+    $screen-name: #{$screen-name} + $_variant-suffix
+
+  $name-or-prefix: null
+  $pseudo-or-suffix: null
+
+  @if $variant
+    @each $variant-key, $variant-value in $variant
+      $name-or-prefix: $variant-key
+      $pseudo-or-suffix: $variant-value
+  
+  @if $utility-name == space-between or $utility-name == divide-width
+    @return #{$screen-name}#{$name-or-prefix}#{$class}"> * + *"#{$pseudo-or-suffix}
+  @else
+    @return #{$screen-name}#{$name-or-prefix}#{$class}#{$pseudo-or-suffix}
+
+
+
+@mixin take-class-and-values($utility-name, $class, $value, $property-and-value, $screen-name, $utility-variants)
+
+  @if is-empty-str($utility-variants)
+
+    #{selector-class($utility-name, $screen-name, $class)}
+      @include new-class-property-and-value($property-and-value, $value)
+
+  @else if is-str($utility-variants) or is-list($utility-variants)
+
+    @each $variant in $utility-variants
+
+      $variant: get-variant($variant)
+      #{selector-class($utility-name, $screen-name, $class, $variant)}
+        @include new-class-property-and-value($property-and-value, $value)

@@ -1,0 +1,129 @@
+@use "sass:map"
+@use "../modules/_type-check" as *
+
+
+@function class-option($class, $utility-name)
+
+
+  @if is-null($class)
+    @return ($utility-name: ($utility-name: VALUE))
+
+
+  @else if is-str($class)
+    // any kind of value in str type
+    // example: "" | mt | border-t
+    @return ($class: ($utility-name: VALUE))
+
+  
+  @else if is-list($class)
+    // example: overflow overflow-x overflow-x
+
+    // will return it in the end
+    $return: ()
+
+    @each $c in $class
+    
+      @if is-null($c)
+        @error "invalid type"
+
+      @else if is-str($c)
+        // individual item from the class list as a str type value
+        // example from abov: overflow
+        $return: map.deep-merge(($c: ($c: VALUE)), $return)
+    
+      @else if is-map($c)
+        // example: gap (gap-x: column-gap, gap-y: row-gap)
+        // example: gap (gap-x: column-gap) (gap-y: row-gap)
+        @each $ck, $cv in $c
+
+          @if is-null($cv)
+            @error "invalid type"
+
+          @if is-str($cv)
+            // individual map key from the class map as a str type value
+            $return: map.deep-merge(($ck: ($cv: VALUE)), $return)
+            
+          @else if is-map($cv)
+            // example: gap (-mt: (margin-top: -VALUE))
+            // @each $cvk, $cvv in $cv
+              // $return: map.deep-merge($return, ($ck: ($cvk: $cvv)))
+            $return: map.deep-merge(($ck: $cv), $return)
+    
+    @return $return
+
+
+  @else if is-map($class)
+    // example: (gap-x: column-gap, gap-y: row-gap)
+
+    // will return it in the end
+    $return: ()
+
+    @each $ck, $cv in $class
+
+      @if is-str($cv)
+        $return: map.deep-merge(($ck: ($cv: VALUE)), $return)
+      
+      @else if is-list($cv)
+        // example: (mx: margin-left margin-right)
+        @each $cvi in $cv
+
+          @if is-str($cvi)
+            // example from abov: margin-left
+            $return: map.deep-merge(($ck: ($cvi: VALUE)), $return)
+            
+          @else if is-map($cvi)
+            // example: (-mx: (margin-left: -VALUE) something))
+            // @each $cvik, $cviv in $cvi
+              // $return: map.deep-merge($return, ($ck: ($cvik: $cviv)))
+            $return: map.deep-merge(($ck: $cvi), $return)
+
+      @else if is-map($cv)
+        // example: (-mx: (margin-left: -VALUE)
+        // @each $cvk, $cvv in $cv
+          // $return: map.deep-merge($return, ($ck: ($cvk: $cvv)))
+        $return: map.deep-merge(($ck: $cv), $return)
+
+    @return $return
+
+  @else 
+    @error "Invalid type"
+
+
+
+
+
+// -----
+
+
+
+
+
+// @use "sass:map";
+// $v: "";
+// $v: "cursor";
+// $v: overflow overflow-x;
+// $v: gap (gap-x: column-gap);
+// $v: gap (-mt: (margin-top: -VALUE));
+// $v: gap (-mt: (margin-top: -VALUE)) (gap-x: column-gap);
+// $v: gap (-mt: (margin-top: -VALUE, margin-top2: -VALUE2)) (gap-x: column-gap);
+// $v: (-mt: (margin-top: -VALUE, margin-top2: -VALUE2));
+// 
+// $utility-name: (
+//   class: null,
+//   class: "",
+//   class: overflow overflow-x overflow-y,
+//   class: gap (
+//     gap-x: column-gap,
+//     gap-y: row-gap,
+//   ),
+//   class: gap (-m: (margin: -VALUE)),
+//   class: (m: (margin: -VALUE)),
+//   class: (
+//     m: margin,
+//     -m: (margin: -VALUE),
+//     -mx: (
+//       margin-left: -VALUE,
+//       margin-right: -VALUE,
+//     ),
+//   ),
+// );

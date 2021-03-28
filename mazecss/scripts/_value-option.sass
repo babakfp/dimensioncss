@@ -1,0 +1,98 @@
+@use "sass:map"
+@use "sass:list"
+@use "../modules/_type-check" as *
+@use "../modules/_type-convert" as *
+
+
+@function value-option($value)
+
+
+  // invalid types
+  @if is-num($value) and is-color($value) and is-bool($value)
+    @error "invalid key type"
+
+
+  @else if is-str($value)
+    @return to-map($value)
+
+
+  @else if is-list($value)
+    @each $v in $value
+      @if is-num($v) and is-color($v) and is-bool($v)
+        @error "invalid key type"
+    @return to-map($value)
+
+
+  @else if is-map($value)
+    // example: (hidden: none)
+
+    // will return it in the end
+    $return: ()
+
+    @each $vk, $vv in $value
+
+      @if is-num($vk) and is-color($vk) and is-bool($vk)
+        @error "invalid key type"
+
+      @else if not is-list($vv) and not is-map($vv)
+        $return: map.deep-merge(($vk: $vv), $return)
+
+      @else if is-list($vv)
+        @if list.length($vv) > 2
+          @error "maximum of 2 lengths is allowed"
+        @else
+          @if not is-map(list.nth($vv, 2))
+            @error "Invalid type"
+          $return: map.deep-merge(($vk: $vv), $return)
+
+      @else if is-map($vv)
+        @each $vvk, $vvv in $vv
+          @if is-num($vvk) and is-color($vvk) and is-bool($vvk)
+            @error "invalid key type"
+          @else
+
+            $seperator: ""
+            @if not is-null($vk) and not is-null($vvk) and not is-empty-str($vk) and not is-empty-str($vvk)
+              $seperator: "-"
+        
+            $return: map.deep-merge((#{$vk}#{$seperator}#{$vvk}: $vvv), $return)
+
+    @return $return
+  
+  @else 
+    @return $value
+
+
+
+
+
+// -----
+
+
+
+
+  
+// value: null
+
+// value: block
+
+// value: block inline
+
+// value: block (hidden: none)
+
+// convert to key and value ^^
+
+
+
+// value: (
+//   inline: inline,
+//   xs: block (line-height: 1rem),
+// )
+
+// value: (
+//   white: white,
+//   gray: (
+//     100: #100,
+//     200: #200,
+//   ),
+// ),

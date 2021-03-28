@@ -1,0 +1,15 @@
+@use "sass:map"
+@use "../config" as *
+@use "../modules/type-check" as *
+
+// This mixin will print the free-css option styles.
+@mixin print-free-css-option($free-css)
+
+  $class-prefix: map.get($dimensioncss, settings, class-prefix)
+
+  // If has value, print the styles.
+  @if not is-null($free-css)
+    @each $class, $property-and-values in $free-css
+      @each $property, $value in $property-and-values
+        #{$class-prefix}#{$class}
+          #{$property}: #{$value}

@@ -1,0 +1,29 @@
+@use "../modules/type-check" as *
+
+@function option-validation($utility-name, $option, $option-name)
+
+  $error-message: "error unexpected type! utility-name:#{$utility-name} | option-name:#{$option-name} | received-type: #{type-of($option)}"
+
+  @if $option-name == class
+    @if is-bool($option) or is-color($option)
+      @error $error-message + " | " + $custom-error-message
+    @else
+      @return $option
+
+  @else if $option-name == value
+    @if is-bool($option) or is-color($option)
+      @error $error-message + " | " + $custom-error-message
+    @else
+      @return $option
+
+  @else if $option-name == free-css
+    @if not is-map($option) and not is-null($option)
+      @error $error-message + " | " + $custom-error-message
+    @else
+      @return $option
+
+  // @else if $option-name == variant
+  //   @if not is-str($option) and not is-list($option) and not is-null($option)
+  //     @error $error-message + " | " + $custom-error-message
+  //   @else
+  //     @return $option

@@ -1,0 +1,54 @@
+@use "sass:list";
+@use "sass:map";
+@use "../modules/_type-check.sass" as *;
+@use "../modules/_str-replace.sass" as *;
+@use "../config" as *;
+
+
+// A list of variants that the variant name and pseudo name is going to be the same.
+$simple-variant: first-child last-child first-type last-type odd even visited checked focus-within hover focus focus-visible active disabled;
+$_variant-suffix: map.get($dimensioncss, settings, variant-suffix);
+
+// $variant = type: str | map
+// return = type: map
+@function get-variant($variant) {
+  
+  $name-or-prefix: null;
+  $pseudo-or-suffix: null;
+
+	// IF the type of the entered variant was a string type, it means that it is a predefined variant.
+  @if is-str($variant) {
+
+    @if list.index($simple-variant, $variant) {
+      $name-or-prefix: $variant + $_variant-suffix;
+      $pseudo-or-suffix: ":#{$variant}";
+    }
+		@else if $variant == group-hover {
+      $name-or-prefix: "group\\::hover .#{$variant + $_variant-suffix}";
+    }
+    @else if $variant == group-focus {
+      $name-or-prefix: "group\\::focus .#{$variant + $_variant-suffix}";
+    }
+		@else if $variant == child {
+      $name-or-prefix: $variant + $_variant-suffix;
+      $pseudo-or-suffix: " > * ";
+    }
+		@else {
+      @if $variant != responsive {
+        @debug $variant;
+        @error "The entered variant name didn't define in the predefined variants list.";;
+      }
+		}
+
+  } @else if is-map($variant) {
+		
+    $name-or-prefix: map.get($variant, name);
+    $pseudo-or-suffix: map.get($variant, pseudo-or-suffix);
+
+  } @else {
+    @error "Unexpected type.";
+  }
+
+  @return ($name-or-prefix: $pseudo-or-suffix);
+  
+}
