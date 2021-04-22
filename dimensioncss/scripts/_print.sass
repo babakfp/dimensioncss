@@ -1,6 +1,7 @@
 @use "sass:map"
 @use "../config" as *
 @use "./option-validation" as *
+@use "./_root.sass" as *
 @import "free-css-option"
 @import "./print-two"
 
@@ -30,23 +31,23 @@
 // Print utilities
 @include looping-utilities() using ($utility-name, $utility-options)
   
-  $free-css: option-validation($utility-name, map.get($utility-options, free-css), free-css)
-  @include print-free-css-option($free-css)
+  // $free-css: option-validation($utility-name, map.get($utility-options, free-css), free-css)
+  // @include print-free-css-option($free-css)
   // Remove free-css option because it's don't needed anymore.
   $utility-options: map.deep-remove($utility-options, free-css)
 
   @include take-utility-options($utility-name, $utility-options, "", "")
 
 
-// Print variants
-@include looping-utilities() using ($utility-name, $utility-options)
-  @include looping-variants($utility-name) using ($utility-variants)
-    @include take-utility-options($utility-name, $utility-options, "", $utility-variants)
+// // Print variants
+// @include looping-utilities() using ($utility-name, $utility-options)
+//   @include looping-variants($utility-name) using ($utility-variants)
+//     @include take-utility-options($utility-name, $utility-options, "", $utility-variants)
 
 
-// Print responsive utilities
-@include looping-screens() using ($screen-name, $utility-name, $utility-options, $utility-variants)
-  @if index($utility-variants, responsive)
-    @include take-utility-options($utility-name, $utility-options, $screen-name, "")
-  // Print responsive variants
-  @include take-utility-options($utility-name, $utility-options, $screen-name, $utility-variants)
+// // Print responsive utilities
+// @include looping-screens() using ($screen-name, $utility-name, $utility-options, $utility-variants)
+//   @if index($utility-variants, responsive)
+//     @include take-utility-options($utility-name, $utility-options, $screen-name, "")
+//   // Print responsive variants
+//   @include take-utility-options($utility-name, $utility-options, $screen-name, $utility-variants)

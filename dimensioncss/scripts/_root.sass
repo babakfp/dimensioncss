@@ -1,0 +1,15 @@
+@use 'sass:map'
+@use "../config/_initial.scss" as *
+@use "../modules/_type-check.sass" as *
+
+
+:root
+
+	@each $color-key, $color-value in map.get($dimensioncss, theme, colors)
+
+			@if is-str($color-value) or is-color($color-value)
+				--#{$color-key}: #{$color-value}
+
+			@else if is-map($color-value)
+				@each $cvk, $cvv in $color-value
+					--#{$color-key}-#{$cvk}: #{$cvv}
